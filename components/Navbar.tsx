@@ -36,12 +36,20 @@ const Navbar: React.FC = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#0EA5E9] transition-all group-hover:w-full"></span>
               </a>
             ))}
-            <a
-              href={`#${RoutePath.CONTACT}`}
-              className="bg-slate-950 text-white px-8 py-3 rounded-full text-xs font-bold tracking-[0.1em] uppercase hover:bg-slate-800 transition-all shadow-xl shadow-black/10 flex items-center gap-3"
-            >
-              Get Started <ArrowRight size={14} />
-            </a>
+            <div className="flex items-center gap-6 border-l border-slate-200 pl-6">
+              <a
+                href={`#${RoutePath.ADMIN_LOGIN}`}
+                className="text-slate-500 hover:text-[#0EA5E9] text-xs font-bold tracking-[0.1em] uppercase transition-colors"
+              >
+                Admin
+              </a>
+              <a
+                href={`#${RoutePath.CONTACT}`}
+                className="bg-slate-950 text-white px-8 py-3 rounded-full text-xs font-bold tracking-[0.1em] uppercase hover:bg-slate-800 transition-all shadow-xl shadow-black/10 flex items-center gap-3"
+              >
+                Get Started <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -66,6 +74,15 @@ const Navbar: React.FC = () => {
                 {item.label}
               </a>
             ))}
+            <div className="border-t border-slate-100 my-2 pt-2">
+              <a
+                href={`#${RoutePath.ADMIN_LOGIN}`}
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-4 text-base font-medium text-slate-500 hover:text-blue-600 hover:bg-slate-50 rounded-lg"
+              >
+                Admin Portal
+              </a>
+            </div>
           </div>
         </div>
       )}

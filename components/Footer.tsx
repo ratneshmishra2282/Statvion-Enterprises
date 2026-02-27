@@ -30,6 +30,7 @@ const Footer: React.FC = () => {
               <li><a href={`#${RoutePath.ABOUT}`} className="hover:text-white transition-colors">About</a></li>
               <li><a href={`#${RoutePath.SERVICES}`} className="hover:text-white transition-colors">Services</a></li>
               <li><a href={`#${RoutePath.CONTACT}`} className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href={`#${RoutePath.ADMIN_LOGIN}`} className="hover:text-[#0EA5E9] transition-colors">Admin Login</a></li>
             </ul>
           </div>
 
@@ -65,6 +66,7 @@ const Footer: React.FC = () => {
           <div className="flex gap-8 text-xs text-slate-500 tracking-widest uppercase font-bold">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href={`#${RoutePath.ADMIN_LOGIN}`} className="hover:text-[#0EA5E9] transition-colors">Admin Portal</a>
           </div>
         </div>
       </div>

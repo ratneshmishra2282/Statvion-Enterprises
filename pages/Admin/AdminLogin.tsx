@@ -14,11 +14,16 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin123') {
+    
+    // Use environment variables for credentials, fallback to default if not set
+    const validUsername = import.meta.env.VITE_ADMIN_USERNAME || 'admin';
+    const validPassword = import.meta.env.VITE_ADMIN_PASSWORD || 'admin123';
+
+    if (username === validUsername && password === validPassword) {
       onLogin();
       window.location.hash = RoutePath.ADMIN_DASHBOARD;
     } else {
-      setError('Invalid credentials. Use admin/admin123');
+      setError('Invalid credentials. Please try again.');
     }
   };
 
