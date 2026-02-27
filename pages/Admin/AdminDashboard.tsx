@@ -30,7 +30,7 @@ interface AdminDashboardProps {
 const DB_FILENAME = 'statvion_db.json';
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogout }) => {
-  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'cloud' | 'seo' | 'responses'>('content');
+  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'cloud' | 'seo' | 'responses'>('cloud');
   const [tempContent, setTempContent] = useState(state.content);
   const [showToast, setShowToast] = useState(false);
   const [syncing, setSyncing] = useState(false);
@@ -41,8 +41,14 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
   useEffect(() => {
     const initGsi = () => {
       if (typeof window !== 'undefined' && (window as any).google) {
+        const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+        
+        if (!clientId) {
+          console.warn('VITE_GOOGLE_CLIENT_ID is not set in environment variables.');
+        }
+
         const client = (window as any).google.accounts.oauth2.initTokenClient({
-          client_id: 'YOUR_CLIENT_ID_HERE.apps.googleusercontent.com', // MUST BE REPLACED BY USER
+          client_id: clientId || 'MISSING_CLIENT_ID',
           scope: 'https://www.googleapis.com/auth/drive.file',
           callback: (response: any) => {
             if (response.access_token) {

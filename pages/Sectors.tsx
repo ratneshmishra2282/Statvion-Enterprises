@@ -31,39 +31,42 @@ const Sectors: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-32 bg-slate-900 overflow-hidden">
+      <section className="relative py-48 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-[#FF9933] rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#0EA5E9] rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FF9933] rounded-full mix-blend-multiply filter blur-[120px] animate-blob"></div>
+          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#0EA5E9] rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-2000"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">
-            Industry <span className="text-[#FF9933]">Sectors</span> We Serve
-          </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-medium">
-            STATVION INFOTECH provides specialized IT solutions and consultancy across a diverse range of industries, 
-            empowering businesses with cutting-edge technology tailored to their unique challenges.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl">
+            <h2 className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8">Industry Expertise</h2>
+            <h1 className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]">
+              Sectors We <span className="italic">Empower</span>.
+            </h1>
+            <p className="text-2xl text-slate-400 max-w-3xl leading-relaxed font-light">
+              Statvion Infotech provides specialized IT solutions and consultancy across a diverse range of industries, 
+              tailoring cutting-edge technology to unique enterprise challenges.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Sectors Grid */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
             {sectors.map((sector, index) => (
               <div 
                 key={index}
-                className="bg-white p-10 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
+                className="cxo-card p-10 rounded-3xl group"
               >
-                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#FF9933]/10 transition-colors">
-                  {React.cloneElement(sector.icon as React.ReactElement, { size: 36 })}
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-slate-950 group-hover:text-white transition-all duration-500">
+                  {React.cloneElement(sector.icon as React.ReactElement, { size: 32, strokeWidth: 1.5 })}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#FF9933] transition-colors">
+                <h3 className="text-2xl font-serif font-light text-slate-900 mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
                   {sector.name}
                 </h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-slate-500 font-light leading-relaxed">
                   Tailored digital transformation and strategic IT consulting for the {sector.name.toLowerCase()} industry.
                 </p>
               </div>
@@ -73,12 +76,12 @@ const Sectors: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-[#FF9933]">
+      <section className="py-40 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-black text-white mb-10 tracking-tight">Ready to transform your industry operations?</h2>
+          <h2 className="text-4xl md:text-6xl font-serif font-light text-slate-900 mb-12 tracking-tight">Ready to transform your <span className="italic">industry</span> operations?</h2>
           <a 
             href="#/contact" 
-            className="inline-flex items-center px-10 py-5 bg-slate-900 text-white font-bold rounded-full hover:bg-slate-800 transition-all shadow-2xl shadow-slate-900/20"
+            className="inline-flex items-center px-14 py-6 bg-slate-950 text-white font-bold rounded-full hover:bg-slate-800 transition-all shadow-2xl shadow-black/10"
           >
             Consult Our Experts
           </a>

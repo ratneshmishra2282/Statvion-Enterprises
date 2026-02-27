@@ -9,39 +9,47 @@ const iconMap: Record<string, any> = {
 
 const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
   return (
-    <div className="py-20 bg-slate-50">
+    <div className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6">Our Services</h1>
-          <p className="max-w-3xl mx-auto text-xl text-slate-600">
+        <div className="max-w-4xl mb-32">
+          <h2 className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8">Service Portfolio</h2>
+          <h1 className="text-5xl md:text-8xl font-serif font-light text-slate-900 mb-10 tracking-tight leading-[0.9]">
+            Strategic <span className="italic">Capabilities</span>.
+          </h1>
+          <p className="text-2xl text-slate-500 leading-relaxed font-light">
             From strategic consulting to end-to-end technical implementation, we provide the tools you need to excel in the digital age.
           </p>
         </div>
 
-        <div className="space-y-24">
+        <div className="space-y-40">
           {['it', 'consultancy', 'development'].map((cat) => {
             const catServices = services.filter(s => s.category === cat);
             if (catServices.length === 0) return null;
 
             return (
-              <div key={cat} className="space-y-10">
-                <h2 className="text-3xl font-bold text-slate-900 border-l-8 border-blue-600 pl-6 capitalize">
-                  {cat === 'it' ? 'IT Infrastructure' : cat === 'consultancy' ? 'Business Consultancy' : 'Software Development'}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div key={cat} className="space-y-16">
+                <div className="flex items-center gap-8">
+                  <h2 className="text-xs font-bold text-slate-400 tracking-[0.4em] uppercase whitespace-nowrap">
+                    {cat === 'it' ? 'IT Infrastructure' : cat === 'consultancy' ? 'Business Consultancy' : 'Software Development'}
+                  </h2>
+                  <div className="h-px bg-slate-100 w-full"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                   {catServices.map((service) => {
                     const IconComp = iconMap[service.icon] || Cpu;
                     return (
-                      <div key={service.id} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all">
-                        <div className="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
-                          <IconComp size={24} />
+                      <div key={service.id} className="cxo-card p-10 rounded-3xl group">
+                        <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-10 group-hover:bg-slate-950 group-hover:text-white transition-all duration-500">
+                          <IconComp size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
-                        <p className="text-slate-600 mb-6 leading-relaxed">
+                        <h3 className="text-2xl font-serif font-light text-slate-900 mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-slate-500 font-light leading-relaxed mb-10">
                           {service.description}
                         </p>
-                        <button className="text-blue-600 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                          Get a Quote <ArrowRight size={18} />
+                        <button className="text-xs font-bold tracking-[0.2em] uppercase text-slate-900 flex items-center gap-3 hover:gap-4 transition-all">
+                          Inquire <ArrowRight size={14} />
                         </button>
                       </div>
                     );

@@ -6,67 +6,66 @@ import Logo from './Logo';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-20 pb-10 border-t border-slate-800">
+    <footer className="bg-slate-950 text-slate-300 pt-32 pb-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <a href={`#${RoutePath.HOME}`} className="inline-block hover:opacity-80 transition-opacity">
-              <Logo variant="light" className="h-12" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
+          <div className="lg:col-span-4 space-y-8">
+            <a href={`#${RoutePath.HOME}`} className="inline-block hover:opacity-70 transition-opacity">
+              <Logo variant="light" className="h-14" />
             </a>
-            <p className="text-slate-400 leading-relaxed">
-              Empowering businesses through cutting-edge IT solutions and strategic consultancy. Your end-to-end partner for digital excellence.
+            <p className="text-slate-400 leading-relaxed text-lg font-light">
+              Empowering global enterprises through strategic technology leadership and engineering excellence.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0EA5E9] hover:text-white transition-all"><Linkedin size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0EA5E9] hover:text-white transition-all"><Twitter size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0EA5E9] hover:text-white transition-all"><Facebook size={18} /></a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0EA5E9] hover:text-white transition-all"><Instagram size={18} /></a>
+            <div className="flex space-x-6">
+              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Linkedin size={20} /></a>
+              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Twitter size={20} /></a>
+              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Facebook size={20} /></a>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6 border-l-4 border-[#0EA5E9] pl-4">Quick Links</h3>
-            <ul className="space-y-4">
-              <li><a href={`#${RoutePath.HOME}`} className="hover:text-[#0EA5E9] transition-colors">Home</a></li>
-              <li><a href={`#${RoutePath.ABOUT}`} className="hover:text-[#0EA5E9] transition-colors">About Us</a></li>
-              <li><a href={`#${RoutePath.SERVICES}`} className="hover:text-[#0EA5E9] transition-colors">Services</a></li>
-              <li><a href={`#${RoutePath.CONTACT}`} className="hover:text-[#0EA5E9] transition-colors">Contact</a></li>
-              <li><a href={`#${RoutePath.ADMIN_LOGIN}`} className="hover:text-[#0EA5E9] transition-colors text-sm opacity-50">Admin Access</a></li>
+          <div className="lg:col-span-2">
+            <h3 className="text-xs font-bold text-white mb-8 tracking-[0.3em] uppercase">Navigation</h3>
+            <ul className="space-y-4 text-sm font-medium">
+              <li><a href={`#${RoutePath.HOME}`} className="hover:text-white transition-colors">Home</a></li>
+              <li><a href={`#${RoutePath.ABOUT}`} className="hover:text-white transition-colors">About</a></li>
+              <li><a href={`#${RoutePath.SERVICES}`} className="hover:text-white transition-colors">Services</a></li>
+              <li><a href={`#${RoutePath.CONTACT}`} className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6 border-l-4 border-[#0EA5E9] pl-4">Services</h3>
-            <ul className="space-y-4">
-              <li><a href="#" className="hover:text-[#0EA5E9] transition-colors">IT Infrastructure</a></li>
-              <li><a href="#" className="hover:text-[#0EA5E9] transition-colors">Business Strategy</a></li>
-              <li><a href="#" className="hover:text-[#0EA5E9] transition-colors">App Development</a></li>
-              <li><a href="#" className="hover:text-[#0EA5E9] transition-colors">Cloud Solutions</a></li>
-              <li><a href="#" className="hover:text-[#0EA5E9] transition-colors">AI & Data Analytics</a></li>
+          <div className="lg:col-span-3">
+            <h3 className="text-xs font-bold text-white mb-8 tracking-[0.3em] uppercase">Expertise</h3>
+            <ul className="space-y-4 text-sm font-medium">
+              <li><a href="#" className="hover:text-white transition-colors">IT Infrastructure</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Business Strategy</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">App Development</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Cloud Solutions</a></li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6 border-l-4 border-[#FF9933] pl-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="text-[#FF9933] shrink-0" size={20} />
-                <span>123 Innovation Drive, Tech City, ST 54321</span>
+          <div className="lg:col-span-3">
+            <h3 className="text-xs font-bold text-white mb-8 tracking-[0.3em] uppercase">Connect</h3>
+            <ul className="space-y-6 text-sm font-medium">
+              <li className="flex items-start gap-4">
+                <MapPin className="text-[#FF9933] shrink-0" size={18} />
+                <span className="text-slate-400">123 Innovation Drive, Tech City, ST 54321</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="text-[#FF9933] shrink-0" size={20} />
-                <span>+1 (555) 123-4567</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="text-[#FF9933] shrink-0" size={20} />
-                <span>contact@statvion.com</span>
+              <li className="flex items-center gap-4">
+                <Mail className="text-[#FF9933] shrink-0" size={18} />
+                <span className="text-slate-400">contact@statvion.com</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} STATVION INFOTECH. All rights reserved.</p>
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-xs text-slate-500 tracking-widest uppercase font-bold">
+            &copy; {new Date().getFullYear()} STATVION INFOTECH.
+          </p>
+          <div className="flex gap-8 text-xs text-slate-500 tracking-widest uppercase font-bold">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>

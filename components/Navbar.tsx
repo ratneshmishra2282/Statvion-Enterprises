@@ -16,31 +16,31 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-xl z-50 border-b border-slate-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-2xl z-50 border-b border-black/[0.03]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-24 items-center">
           <div className="flex items-center">
-            <a href={`#${RoutePath.HOME}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <Logo className="h-10" />
+            <a href={`#${RoutePath.HOME}`} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+              <Logo className="h-12" />
             </a>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-12">
             {navItems.map((item) => (
               <a
                 key={item.path}
                 href={`#${item.path}`}
-                className="text-slate-600 hover:text-[#0EA5E9] font-semibold transition-colors relative group"
+                className="text-slate-900 hover:text-[#0EA5E9] text-xs font-bold tracking-[0.2em] uppercase transition-colors relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0EA5E9] transition-all group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#0EA5E9] transition-all group-hover:w-full"></span>
               </a>
             ))}
             <a
               href={`#${RoutePath.CONTACT}`}
-              className="bg-[#FF9933] text-white px-6 py-2.5 rounded-full font-bold hover:bg-[#E67E22] transition-all shadow-lg shadow-[#FF9933]/20 flex items-center gap-2"
+              className="bg-slate-950 text-white px-8 py-3 rounded-full text-xs font-bold tracking-[0.1em] uppercase hover:bg-slate-800 transition-all shadow-xl shadow-black/10 flex items-center gap-3"
             >
-              Get Started <ArrowRight size={18} />
+              Get Started <ArrowRight size={14} />
             </a>
           </div>
 
