@@ -96,7 +96,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email Us</p>
-                    <p className="text-slate-300 font-light">contact@statvion.com</p>
+                    <p className="text-slate-300 font-light">contact@statvion.in</p>
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
               
               {isSent && (
                 <div className="mt-10 p-6 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-2xl text-center font-light text-lg">
-                  Thank you. Your message has been received. Our leadership team will contact you shortly.
+                  Thank you. Your message has been received. Our team will contact you shortly.
                 </div>
               )}
             </form>
