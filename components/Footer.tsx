@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-6">
               <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Linkedin size={20} /></a>
               <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Twitter size={20} /></a>
-              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Facebook size={20} /></a>
+              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all"><Instagram size={20} /></a>
             </div>
           </div>
 
@@ -49,11 +49,11 @@ const Footer: React.FC = () => {
             <ul className="space-y-6 text-sm font-medium">
               <li className="flex items-start gap-4">
                 <MapPin className="text-[#FF9933] shrink-0" size={18} />
-                <span className="text-slate-400">123 Innovation Drive, Tech City, ST 54321</span>
+                <span className="text-slate-400">Lucknow, Uttar Pradesh</span>
               </li>
               <li className="flex items-center gap-4">
                 <Mail className="text-[#FF9933] shrink-0" size={18} />
-                <span className="text-slate-400">contact@statvion.com</span>
+                <span className="text-slate-400">contact@statvion.in</span>
               </li>
             </ul>
           </div>
