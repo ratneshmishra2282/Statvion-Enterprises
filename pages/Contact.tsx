@@ -1,13 +1,15 @@
 
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Globe } from 'lucide-react';
-import { ContactResponse } from '../types';
+import { ContactResponse, AppImages } from '../types';
 
 interface ContactProps {
   onSendMessage?: (response: Omit<ContactResponse, 'id' | 'timestamp'>) => void;
+  images: AppImages;
 }
 
-const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
+const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSent, setIsSent] = useState(false);
 
@@ -53,27 +55,55 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <div className="py-32">
+    <div className="py-32 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mb-32">
-          <h2 className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8">Connect</h2>
-          <h1 className="text-5xl md:text-8xl font-serif font-light text-slate-900 mb-10 tracking-tight leading-[0.9]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mb-32"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8"
+          >
+            Connect
+          </motion.h2>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
+          >
             Start the <span className="italic">Dialogue</span>.
-          </h1>
-          <p className="text-2xl text-slate-500 leading-relaxed font-light">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-2xl text-slate-400 leading-relaxed font-light"
+          >
             Have a project in mind or need strategic guidance? Our team is ready to help you navigate your digital transformation journey.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
           {/* Contact Info */}
           <div className="lg:col-span-4 space-y-12">
-            <div className="bg-slate-950 p-12 rounded-[3rem] text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9933]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="bg-slate-950 p-12 rounded-[3rem] text-white relative overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/20 transition-all duration-500 border border-slate-800"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9933]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-[#FF9933]/10 transition-colors duration-500"></div>
               <h3 className="text-2xl font-serif font-light mb-12 tracking-tight">Contact Information</h3>
               <div className="space-y-10">
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933]">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933] group-hover:scale-110 transition-transform duration-500">
                     <MapPin size={24} />
                   </div>
                   <div>
@@ -82,7 +112,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933]">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933] group-hover:scale-110 transition-transform duration-500">
                     <Phone size={24} />
                   </div>
                   <div>
@@ -91,37 +121,50 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933]">
+                  <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933] group-hover:scale-110 transition-transform duration-500">
                     <Mail size={24} />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email Us</p>
-                    <p className="text-slate-300 font-light">contact@statvion.in</p>
+                    <p className="text-slate-300 font-light">contact@statvion.com</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Map Placeholder */}
-            <div className="h-80 rounded-[3rem] bg-slate-100 overflow-hidden relative group border border-black/[0.03]">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-80 rounded-[3rem] bg-slate-950 overflow-hidden relative group border border-slate-800"
+            >
               <img 
-                src="https://picsum.photos/seed/map/800/600" 
+                src={images.contactMap} 
                 alt="Map" 
                 className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white/90 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-white/20">
-                  <span className="text-xs font-bold tracking-widest uppercase text-slate-900 flex items-center gap-3">
+                <div className="bg-slate-900/90 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-white/10">
+                  <span className="text-xs font-bold tracking-widest uppercase text-white flex items-center gap-3">
                     <MapPin size={16} className="text-[#0EA5E9]" /> View on Google Maps
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-8">
-            <form onSubmit={handleSubmit} className="bg-white p-10 lg:p-20 rounded-[3rem] shadow-2xl shadow-black/[0.02] border border-black/[0.03]">
+          <motion.div 
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-8"
+          >
+            <form onSubmit={handleSubmit} className="bg-slate-950 p-10 lg:p-20 rounded-[3rem] shadow-2xl shadow-blue-900/20 border border-slate-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
                 <div className="space-y-3">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Your Name</label>
@@ -131,7 +174,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
                     placeholder="John Doe"
-                    className="w-full px-6 py-5 rounded-2xl bg-slate-50 border border-transparent focus:bg-white focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg" 
+                    className="w-full px-6 py-5 rounded-2xl bg-black border border-transparent focus:bg-slate-900 focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg text-white" 
                   />
                 </div>
                 <div className="space-y-3">
@@ -142,7 +185,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                     value={formState.email}
                     onChange={(e) => setFormState({...formState, email: e.target.value})}
                     placeholder="john@example.com"
-                    className="w-full px-6 py-5 rounded-2xl bg-slate-50 border border-transparent focus:bg-white focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg" 
+                    className="w-full px-6 py-5 rounded-2xl bg-black border border-transparent focus:bg-slate-900 focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg text-white" 
                   />
                 </div>
               </div>
@@ -154,7 +197,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                   value={formState.subject}
                   onChange={(e) => setFormState({...formState, subject: e.target.value})}
                   placeholder="Strategic Inquiry"
-                  className="w-full px-6 py-5 rounded-2xl bg-slate-50 border border-transparent focus:bg-white focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg" 
+                  className="w-full px-6 py-5 rounded-2xl bg-black border border-transparent focus:bg-slate-900 focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg text-white" 
                 />
               </div>
               <div className="space-y-3 mb-12">
@@ -165,23 +208,29 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage }) => {
                   value={formState.message}
                   onChange={(e) => setFormState({...formState, message: e.target.value})}
                   placeholder="Describe your vision..."
-                  className="w-full px-6 py-5 rounded-2xl bg-slate-50 border border-transparent focus:bg-white focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg resize-none"
+                  className="w-full px-6 py-5 rounded-2xl bg-black border border-transparent focus:bg-slate-900 focus:border-[#0EA5E9]/30 outline-none transition-all font-light text-lg resize-none text-white"
                 ></textarea>
               </div>
-              <button 
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-slate-950 text-white font-bold py-6 rounded-2xl hover:bg-slate-800 transition-all flex items-center justify-center gap-4 text-xl shadow-2xl shadow-black/10"
+                className="w-full bg-[#FF9933] text-white font-bold py-6 rounded-2xl hover:bg-[#E67E22] transition-all flex items-center justify-center gap-4 text-xl shadow-2xl shadow-[#FF9933]/20"
               >
                 Send Message <Send size={20} className="font-light" />
-              </button>
+              </motion.button>
               
               {isSent && (
-                <div className="mt-10 p-6 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-2xl text-center font-light text-lg">
-                  Thank you. Your message has been received. Our team will contact you shortly.
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-10 p-6 bg-emerald-900/30 text-emerald-400 border border-emerald-900/50 rounded-2xl text-center font-light text-lg"
+                >
+                  Thank you. Your message has been received. Our leadership team will contact you shortly.
+                </motion.div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

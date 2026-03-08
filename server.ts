@@ -13,9 +13,21 @@ async function startServer() {
   app.use(express.json());
 
   // Google Sheets API Setup
-  const SPREADSHEET_ID = "15LsLFmzbu2RtryLWnIW4LoVzBJuiiRsdmragjVwrRPo";
+  const SPREADSHEET_ID = "1y1LbIdpvG-Hkm1YMwnK6r1ystqf0wOXm8-RCDf8ErKM";
   const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+  
+  // Robustly parse the private key
+  let PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
+  if (PRIVATE_KEY) {
+    // Remove surrounding quotes if the user accidentally included them
+    if (PRIVATE_KEY.startsWith('"') && PRIVATE_KEY.endsWith('"')) {
+      PRIVATE_KEY = PRIVATE_KEY.slice(1, -1);
+    } else if (PRIVATE_KEY.startsWith("'") && PRIVATE_KEY.endsWith("'")) {
+      PRIVATE_KEY = PRIVATE_KEY.slice(1, -1);
+    }
+    // Convert literal \n strings into actual newline characters
+    PRIVATE_KEY = PRIVATE_KEY.replace(/\\n/g, "\n");
+  }
 
   const auth = new JWT({
     email: SERVICE_ACCOUNT_EMAIL,

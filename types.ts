@@ -35,12 +35,20 @@ export interface ContactResponse {
   timestamp: string;
 }
 
+export interface AppImages {
+  homeStrategy: string;
+  aboutHero: string;
+  contactMap: string;
+  logoUrl?: string;
+}
+
 export interface AppState {
   services: Service[];
   content: PageContent;
   isLoggedIn: boolean;
   cloudConfig: CloudConfig;
   responses: ContactResponse[];
+  images: AppImages;
 }
 
 export enum RoutePath {

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { RoutePath, AppState } from './types';
 import { loadAppState, saveAppState } from './store';
 import Navbar from './components/Navbar';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleHashChange = () => {
       setCurrentPath(window.location.hash.slice(1) || RoutePath.HOME);
+      window.scrollTo(0, 0);
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -35,9 +37,9 @@ const App: React.FC = () => {
   const renderPage = () => {
     switch (currentPath) {
       case RoutePath.HOME:
-        return <Home content={state.content} services={state.services} />;
+        return <Home content={state.content} services={state.services} images={state.images} />;
       case RoutePath.ABOUT:
-        return <About content={state.content} />;
+        return <About content={state.content} images={state.images} />;
       case RoutePath.SERVICES:
         return <ServicesPage services={state.services} />;
       case RoutePath.SECTORS:
@@ -45,6 +47,7 @@ const App: React.FC = () => {
       case RoutePath.CONTACT:
         return (
           <Contact 
+            images={state.images}
             onSendMessage={(data) => {
               const newResponse = {
                 ...data,
@@ -76,11 +79,21 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {!isCMSPage && <Navbar />}
+      {!isCMSPage && <Navbar logoUrl={state.images?.logoUrl} />}
       <main className={`flex-grow ${!isCMSPage ? 'pt-20' : ''}`}>
-        {renderPage()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPath}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            {renderPage()}
+          </motion.div>
+        </AnimatePresence>
       </main>
-      {!isCMSPage && <Footer />}
+      {!isCMSPage && <Footer logoUrl={state.images?.logoUrl} />}
     </div>
   );
 };

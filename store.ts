@@ -82,6 +82,13 @@ const DEFAULT_CONTENT = {
   mission: 'To empower organizations through strategic technology leadership and customized IT services that foster agility and growth.'
 };
 
+const DEFAULT_IMAGES = {
+  homeStrategy: 'https://picsum.photos/seed/strategy/800/600',
+  aboutHero: 'https://picsum.photos/seed/about/800/1000',
+  contactMap: 'https://picsum.photos/seed/map/800/600',
+  logoUrl: ''
+};
+
 export const loadAppState = (): AppState => {
   const saved = localStorage.getItem('statvion_app_state');
   if (saved) {
@@ -94,6 +101,10 @@ export const loadAppState = (): AppState => {
     if (!parsed.responses) {
       parsed.responses = [];
     }
+    // Ensure images exists for legacy migrations
+    if (!parsed.images) {
+      parsed.images = DEFAULT_IMAGES;
+    }
     return parsed;
   }
   return {
@@ -101,7 +112,8 @@ export const loadAppState = (): AppState => {
     content: DEFAULT_CONTENT,
     isLoggedIn: false,
     cloudConfig: { isEnabled: false },
-    responses: []
+    responses: [],
+    images: DEFAULT_IMAGES
   };
 };
 

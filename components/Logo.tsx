@@ -4,12 +4,19 @@ import React from 'react';
 interface LogoProps {
   className?: string;
   variant?: 'light' | 'dark';
+  logoUrl?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "h-12", variant = 'dark' }) => {
+const Logo: React.FC<LogoProps> = ({ className = "h-12", variant = 'dark', logoUrl }) => {
   const orangeColor = '#E67E22'; // Saffron/Orange from the logo
   const blueColor = '#2980B9';   // Blue from the logo
   const textColor = variant === 'dark' ? '#2C3E50' : '#FFFFFF';
+
+  if (logoUrl) {
+    return (
+      <img src={logoUrl} alt="STATVION Logo" className={`object-contain ${className}`} referrerPolicy="no-referrer" />
+    );
+  }
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>

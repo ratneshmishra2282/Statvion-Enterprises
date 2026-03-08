@@ -89,13 +89,18 @@
 }
 
 .cxo-card {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cxo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border-color: var(--sky-blue);
+}
+
+body {
+  background-color: #000000;
+  color: #e2e8f0;
 }
