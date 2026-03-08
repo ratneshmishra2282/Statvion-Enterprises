@@ -89,6 +89,11 @@ const DEFAULT_IMAGES = {
   logoUrl: ''
 };
 
+const DEFAULT_THEME = {
+  fontFamily: 'Inter, sans-serif',
+  fontSize: '16px'
+};
+
 export const loadAppState = (): AppState => {
   const saved = localStorage.getItem('statvion_app_state');
   if (saved) {
@@ -105,6 +110,9 @@ export const loadAppState = (): AppState => {
     if (!parsed.images) {
       parsed.images = DEFAULT_IMAGES;
     }
+    if (!parsed.theme) {
+      parsed.theme = DEFAULT_THEME;
+    }
     return parsed;
   }
   return {
@@ -113,7 +121,8 @@ export const loadAppState = (): AppState => {
     isLoggedIn: false,
     cloudConfig: { isEnabled: false },
     responses: [],
-    images: DEFAULT_IMAGES
+    images: DEFAULT_IMAGES,
+    theme: DEFAULT_THEME
   };
 };
 

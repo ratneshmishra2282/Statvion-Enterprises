@@ -26,6 +26,13 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  useEffect(() => {
+    if (state.theme) {
+      document.documentElement.style.fontSize = state.theme.fontSize;
+      document.documentElement.style.fontFamily = state.theme.fontFamily;
+    }
+  }, [state.theme]);
+
   const updateState = useCallback((newState: Partial<AppState>) => {
     setState(prev => {
       const updated = { ...prev, ...newState };

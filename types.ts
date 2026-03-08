@@ -42,6 +42,11 @@ export interface AppImages {
   logoUrl?: string;
 }
 
+export interface AppTheme {
+  fontFamily: string;
+  fontSize: string;
+}
+
 export interface AppState {
   services: Service[];
   content: PageContent;
@@ -49,6 +54,7 @@ export interface AppState {
   cloudConfig: CloudConfig;
   responses: ContactResponse[];
   images: AppImages;
+  theme: AppTheme;
 }
 
 export enum RoutePath {
