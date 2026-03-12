@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const [state, setState] = useState<AppState>(loadAppState());
   const [isAuthReady, setIsAuthReady] = useState(false);
 
-  const ALLOWED_EMAILS = ['ratnesh22822@gmail.com'];
+  const ALLOWED_EMAILS = ['ratnesh2282@gmail.com'];
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {

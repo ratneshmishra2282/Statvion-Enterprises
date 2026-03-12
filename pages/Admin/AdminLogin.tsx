@@ -13,7 +13,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const ALLOWED_EMAILS = ['ratnesh22822@gmail.com'];
+  const ALLOWED_EMAILS = ['ratnesh2282@gmail.com'];
 
   const handleGoogleLogin = async () => {
     setIsLoading(true);
@@ -29,7 +29,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
       }
     } catch (err: any) {
       console.error(err);
-      setError('Authentication failed. Please try again.');
+      setError(`Authentication failed: ${err.message || 'Please try again.'}`);
     } finally {
       setIsLoading(false);
     }
