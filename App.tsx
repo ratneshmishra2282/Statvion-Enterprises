@@ -53,6 +53,19 @@ const App: React.FC = () => {
     }
   }, [state.theme]);
 
+  useEffect(() => {
+    if (state.seo) {
+      document.title = state.seo.metaTitle;
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.setAttribute('content', state.seo.metaDescription);
+    }
+  }, [state.seo]);
+
   const updateState = useCallback((newState: Partial<AppState>) => {
     setState(prev => {
       const updated = { ...prev, ...newState };

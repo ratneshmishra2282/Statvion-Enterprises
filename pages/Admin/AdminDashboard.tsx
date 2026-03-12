@@ -41,6 +41,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
   const [tempContent, setTempContent] = useState(state.content);
   const [tempImages, setTempImages] = useState(state.images);
   const [tempTheme, setTempTheme] = useState(state.theme || { fontFamily: 'Inter, sans-serif', fontSize: '16px' });
+  const [tempSeo, setTempSeo] = useState(state.seo || { metaTitle: '', metaDescription: '' });
   const [generatingImage, setGeneratingImage] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [syncing, setSyncing] = useState(false);
@@ -345,7 +346,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 <Monitor size={18} /> Visit Site
               </a>
               <AnimatePresence>
-                {(activeTab === 'content' || activeTab === 'appearance') && (
+                {(activeTab === 'content' || activeTab === 'appearance' || activeTab === 'seo') && (
                   <motion.button 
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -354,6 +355,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                       if (activeTab === 'content') handleSaveContent();
                       if (activeTab === 'appearance') {
                         onUpdate({ theme: tempTheme });
+                        setShowToast(true);
+                        setTimeout(() => setShowToast(false), 3000);
+                      }
+                      if (activeTab === 'seo') {
+                        onUpdate({ seo: tempSeo });
                         setShowToast(true);
                         setTimeout(() => setShowToast(false), 3000);
                       }
@@ -628,13 +634,24 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 <div className="space-y-6 max-w-2xl">
                   <div>
                     <label className="block text-sm font-bold text-slate-300 mb-2">Meta Title</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white" placeholder="STATVION | End-to-End IT Services" />
+                    <input 
+                      type="text" 
+                      value={tempSeo.metaTitle}
+                      onChange={(e) => setTempSeo({ ...tempSeo, metaTitle: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                      placeholder="STATVION | End-to-End IT Services" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-slate-300 mb-2">Meta Description</label>
-                    <textarea className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white" rows={3} placeholder="Expert IT consultancy and software development..." />
+                    <textarea 
+                      value={tempSeo.metaDescription}
+                      onChange={(e) => setTempSeo({ ...tempSeo, metaDescription: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                      rows={4} 
+                      placeholder="Expert IT consultancy and software development..." 
+                    />
                   </div>
-                  <button className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all">Update Marketing Settings</button>
                 </div>
               </motion.div>
             )}

@@ -94,6 +94,11 @@ const DEFAULT_THEME = {
   fontSize: '16px'
 };
 
+const DEFAULT_SEO = {
+  metaTitle: 'Statvion Infotech | End-to-End IT & Consultancy Services',
+  metaDescription: 'Leading IT consultancy providing end-to-end technology solutions, software development, and strategic IT consulting for businesses worldwide.'
+};
+
 export const loadAppState = (): AppState => {
   const saved = localStorage.getItem('statvion_app_state');
   if (saved) {
@@ -113,6 +118,9 @@ export const loadAppState = (): AppState => {
     if (!parsed.theme) {
       parsed.theme = DEFAULT_THEME;
     }
+    if (!parsed.seo) {
+      parsed.seo = DEFAULT_SEO;
+    }
     return parsed;
   }
   return {
@@ -122,7 +130,8 @@ export const loadAppState = (): AppState => {
     cloudConfig: { isEnabled: false },
     responses: [],
     images: DEFAULT_IMAGES,
-    theme: DEFAULT_THEME
+    theme: DEFAULT_THEME,
+    seo: DEFAULT_SEO
   };
 };
 

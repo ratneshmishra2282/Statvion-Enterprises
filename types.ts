@@ -47,6 +47,11 @@ export interface AppTheme {
   fontSize: string;
 }
 
+export interface AppSEO {
+  metaTitle: string;
+  metaDescription: string;
+}
+
 export interface AppState {
   services: Service[];
   content: PageContent;
@@ -55,6 +60,7 @@ export interface AppState {
   responses: ContactResponse[];
   images: AppImages;
   theme: AppTheme;
+  seo: AppSEO;
 }
 
 export enum RoutePath {
