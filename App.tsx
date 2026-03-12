@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RoutePath, AppState } from './types';
 import { loadAppState, saveAppState } from './store';
+import { auth, logOut } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -16,6 +18,24 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<string>(window.location.hash.slice(1) || RoutePath.HOME);
   const [state, setState] = useState<AppState>(loadAppState());
+  const [isAuthReady, setIsAuthReady] = useState(false);
+
+  const ALLOWED_EMAILS = ['ratnesh2282@gmail.com'];
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.email && ALLOWED_EMAILS.includes(user.email)) {
+        setState(prev => ({ ...prev, isLoggedIn: true }));
+      } else {
+        if (user) {
+          await logOut();
+        }
+        setState(prev => ({ ...prev, isLoggedIn: false }));
+      }
+      setIsAuthReady(true);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -66,16 +86,17 @@ const App: React.FC = () => {
           />
         );
       case RoutePath.ADMIN_LOGIN:
-        return <AdminLogin onLogin={() => updateState({ isLoggedIn: true })} />;
+        return <AdminLogin onLogin={() => {}} />;
       case RoutePath.ADMIN_DASHBOARD:
+        if (!isAuthReady) return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>;
         return state.isLoggedIn ? (
           <AdminDashboard 
             state={state} 
             onUpdate={updateState} 
-            onLogout={() => updateState({ isLoggedIn: false })} 
+            onLogout={() => {}} 
           />
         ) : (
-          <AdminLogin onLogin={() => updateState({ isLoggedIn: true })} />
+          <AdminLogin onLogin={() => {}} />
         );
       default:
         return <Home content={state.content} services={state.services} />;

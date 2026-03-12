@@ -32,7 +32,7 @@ const Sectors: React.FC = () => {
   return (
     <div className="bg-black">
       {/* Hero Section */}
-      <section className="relative py-48 bg-slate-950 overflow-hidden">
+      <section className="relative pt-24 pb-48 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <motion.div 
             animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
@@ -60,7 +60,7 @@ const Sectors: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
+              className="text-4xl md:text-6xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
             >
               Sectors We <span className="italic">Empower</span>.
             </motion.h1>
@@ -93,7 +93,7 @@ const Sectors: React.FC = () => {
                 <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#FF9933] group-hover:text-white transition-all duration-500">
                   {React.cloneElement(sector.icon as React.ReactElement, { size: 32, strokeWidth: 1.5 })}
                 </div>
-                <h3 className="text-2xl font-serif font-light text-white mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
+                <h3 className="text-xl font-serif font-light text-white mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
                   {sector.name}
                 </h3>
                 <p className="text-slate-400 font-light leading-relaxed">
@@ -113,7 +113,7 @@ const Sectors: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-serif font-light text-white mb-12 tracking-tight"
+            className="text-3xl md:text-5xl font-serif font-light text-white mb-12 tracking-tight"
           >
             Ready to transform your <span className="italic">industry</span> operations?
           </motion.h2>

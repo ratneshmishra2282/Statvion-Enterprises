@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-950 pt-32 pb-24 lg:pt-56 lg:pb-48">
+      <section className="relative overflow-hidden bg-slate-950 pt-16 pb-24 lg:pt-24 lg:pb-48">
         <div className="absolute inset-0 z-0">
           <motion.div 
             animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
@@ -51,7 +51,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-9xl font-serif font-light text-white leading-[0.95] mb-10 tracking-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-white leading-[0.95] mb-10 tracking-tight"
             >
               Architecting the <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FF9933] to-orange-400">Future</span> of Enterprise.
             </motion.h1>
@@ -102,7 +102,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:col-span-8"
             >
-              <p className="text-4xl md:text-6xl font-serif font-light text-white leading-[1.1] tracking-tight">
+              <p className="text-3xl md:text-5xl font-serif font-light text-white leading-[1.1] tracking-tight">
                 Statvion Infotech is a <span className="italic text-[#0EA5E9]">premier</span> technology advisory and business consultancy, dedicated to engineering resilient, scalable, and future-ready digital ecosystems for the modern enterprise.
               </p>
             </motion.div>
@@ -129,7 +129,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
                 className="space-y-10 group"
               >
                 <div className="w-12 h-px bg-[#FF9933] group-hover:w-20 transition-all duration-700"></div>
-                <h3 className="text-4xl font-serif font-light tracking-tight">{item.title}</h3>
+                <h3 className="text-3xl font-serif font-light tracking-tight">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-xl font-light">
                   {item.desc}
                 </p>
@@ -150,7 +150,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
             className="max-w-4xl mb-24"
           >
             <h2 className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8">Value Creation</h2>
-            <h3 className="text-5xl md:text-7xl font-serif font-light text-white mb-10 tracking-tight">Impact that <span className="italic">Endures</span>.</h3>
+            <h3 className="text-4xl md:text-5xl font-serif font-light text-white mb-10 tracking-tight">Impact that <span className="italic">Endures</span>.</h3>
             <p className="text-2xl text-slate-400 leading-relaxed font-light">
               We focus on outcomes that matter — improving operational efficiency, strengthening system reliability, and enabling data-driven decision-making.
             </p>
@@ -223,7 +223,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
               className="lg:w-1/2"
             >
               <h2 className="text-[#FF9933] font-bold uppercase tracking-widest text-sm mb-6">Why Statvion Infotech</h2>
-              <h3 className="text-4xl md:text-5xl font-extrabold text-white mb-8 tracking-tight">Expertise Across the Full Lifecycle</h3>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-8 tracking-tight">Expertise Across the Full Lifecycle</h3>
               <p className="text-xl text-slate-400 mb-10 leading-relaxed">
                 We combine technical depth with business understanding across the full lifecycle of engagement.
               </p>
@@ -271,7 +271,7 @@ const Home: React.FC<HomeProps> = ({ content, services, images }) => {
             />
             <div className="relative z-10">
               <h2 className="text-[#FF9933] font-bold uppercase tracking-[0.4em] text-xs mb-12">Strategic Partnership</h2>
-              <h3 className="text-5xl md:text-8xl font-serif font-light text-white mb-12 tracking-tight leading-[0.9]">Let’s Build What’s <span className="italic">Next</span>.</h3>
+              <h3 className="text-4xl md:text-6xl font-serif font-light text-white mb-12 tracking-tight leading-[0.9]">Let’s Build What’s <span className="italic">Next</span>.</h3>
               <p className="text-slate-400 text-2xl mb-16 max-w-3xl mx-auto leading-relaxed font-light">
                 Engage with our leadership team to explore your transformation roadmap.
               </p>

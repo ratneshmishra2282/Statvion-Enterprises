@@ -6,7 +6,7 @@ import { Target, Eye, Gem, Users } from 'lucide-react';
 
 const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content, images }) => {
   return (
-    <div className="py-32 bg-black">
+    <div className="pt-16 pb-32 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div 
@@ -27,7 +27,7 @@ const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content,
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
+            className="text-4xl md:text-6xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
           >
             Pioneering <span className="italic">Digital</span> Leadership.
           </motion.h1>
@@ -50,7 +50,7 @@ const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content,
             transition={{ duration: 0.8 }}
             className="lg:col-span-7"
           >
-            <h2 className="text-4xl font-serif font-light text-white mb-10 tracking-tight">Our Philosophy</h2>
+            <h2 className="text-3xl font-serif font-light text-white mb-10 tracking-tight">Our Philosophy</h2>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed font-light">
               {content.aboutText}
             </p>
@@ -90,7 +90,7 @@ const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content,
             <div className="w-16 h-16 bg-blue-600/10 border border-blue-600/20 rounded-2xl flex items-center justify-center mb-10 text-blue-500 group-hover:scale-110 transition-transform duration-500">
               <Eye size={32} />
             </div>
-            <h3 className="text-3xl font-serif font-light mb-6 tracking-tight">Our Vision</h3>
+            <h3 className="text-2xl font-serif font-light mb-6 tracking-tight">Our Vision</h3>
             <p className="text-slate-400 text-xl leading-relaxed font-light">{content.vision}</p>
           </motion.div>
           <motion.div 
@@ -103,7 +103,7 @@ const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content,
             <div className="w-16 h-16 bg-black border border-white/[0.05] rounded-2xl flex items-center justify-center mb-10 text-[#FF9933] shadow-sm group-hover:scale-110 transition-transform duration-500">
               <Target size={32} />
             </div>
-            <h3 className="text-3xl font-serif font-light mb-6 tracking-tight">Our Mission</h3>
+            <h3 className="text-2xl font-serif font-light mb-6 tracking-tight">Our Mission</h3>
             <p className="text-slate-400 text-xl leading-relaxed font-light">{content.mission}</p>
           </motion.div>
         </div>
@@ -137,7 +137,7 @@ const About: React.FC<{ content: PageContent, images: AppImages }> = ({ content,
                 <div className="w-16 h-16 bg-black rounded-2xl text-white flex items-center justify-center mx-auto mb-8 group-hover:bg-[#FF9933] group-hover:text-white transition-all duration-500">
                   <value.icon size={32} strokeWidth={1.5} />
                 </div>
-                <h4 className="text-2xl font-serif font-light mb-4 tracking-tight text-white">{value.title}</h4>
+                <h4 className="text-xl font-serif font-light mb-4 tracking-tight text-white">{value.title}</h4>
                 <p className="text-slate-400 font-light leading-relaxed">{value.text}</p>
               </motion.div>
             ))}

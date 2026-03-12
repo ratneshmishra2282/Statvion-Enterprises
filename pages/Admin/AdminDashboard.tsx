@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 import { GoogleGenAI } from '@google/genai';
+import { logOut } from '../../firebase';
 
 interface AdminDashboardProps {
   state: AppState;
@@ -79,9 +80,14 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
     return () => clearInterval(checkGapi);
   }, []);
 
-  const handleLogout = () => {
-    onLogout();
-    window.location.hash = RoutePath.HOME;
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      onLogout();
+      window.location.hash = RoutePath.HOME;
+    } catch (error) {
+      console.error('Failed to log out', error);
+    }
   };
 
   const handleSaveContent = () => {

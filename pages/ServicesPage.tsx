@@ -10,7 +10,7 @@ const iconMap: Record<string, any> = {
 
 const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
   return (
-    <div className="py-32 bg-black">
+    <div className="pt-16 pb-32 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -30,7 +30,7 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
+            className="text-4xl md:text-6xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
           >
             Strategic <span className="italic">Capabilities</span>.
           </motion.h1>
@@ -84,7 +84,7 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
                         <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-10 group-hover:bg-[#FF9933] group-hover:text-white transition-all duration-500">
                           <IconComp size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-2xl font-serif font-light text-white mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
+                        <h3 className="text-xl font-serif font-light text-white mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
                           {service.title}
                         </h3>
                         <p className="text-slate-400 font-light leading-relaxed mb-10">

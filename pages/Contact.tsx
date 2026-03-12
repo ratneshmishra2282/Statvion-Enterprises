@@ -55,7 +55,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
   };
 
   return (
-    <div className="py-32 bg-black">
+    <div className="pt-16 pb-32 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -75,7 +75,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-8xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
+            className="text-4xl md:text-6xl font-serif font-light text-white mb-10 tracking-tight leading-[0.9]"
           >
             Start the <span className="italic">Dialogue</span>.
           </motion.h1>
@@ -100,7 +100,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
               className="bg-slate-950 p-12 rounded-[3rem] text-white relative overflow-hidden group hover:shadow-2xl hover:shadow-blue-900/20 transition-all duration-500 border border-slate-800"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF9933]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-[#FF9933]/10 transition-colors duration-500"></div>
-              <h3 className="text-2xl font-serif font-light mb-12 tracking-tight">Contact Information</h3>
+              <h3 className="text-xl font-serif font-light mb-12 tracking-tight">Contact Information</h3>
               <div className="space-y-10">
                 <div className="flex items-start gap-6">
                   <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-[#FF9933] group-hover:scale-110 transition-transform duration-500">

@@ -1,0 +1,131 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: admins
+    // Document ID: userId (Firebase Auth UID)
+    // Fields:
+    //   - email: string (required)
+    //   - role: string (required, 'admin')
+    //
+    // Collection: services
+    // Document ID: auto-generated
+    // Fields:
+    //   - title: string (required)
+    //   - description: string (required)
+    //   - icon: string (required)
+    //   - category: string (required, 'it', 'consultancy', 'development')
+    //
+    // Collection: contactResponses
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required)
+    //   - email: string (required)
+    //   - subject: string (required)
+    //   - message: string (required)
+    //   - timestamp: string (required)
+    //
+    // Collection: appState
+    // Document ID: global
+    // Fields:
+    //   - content: map
+    //   - images: map
+    //   - theme: map
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "ratnesh2282@gmail.com" && request.auth.token.email_verified == true ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && 
+        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin'
+      );
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    function isValidAdmin(data) {
+      return hasOnlyAllowedFields(['email', 'role']) &&
+             data.email is string && isValidEmail(data.email) &&
+             data.role == 'admin';
+    }
+
+    function isValidService(data) {
+      return hasOnlyAllowedFields(['title', 'description', 'icon', 'category']) &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 100 &&
+             data.description is string && data.description.size() > 0 && data.description.size() < 1000 &&
+             data.icon is string && data.icon.size() > 0 && data.icon.size() < 50 &&
+             data.category in ['it', 'consultancy', 'development'];
+    }
+
+    function isValidContactResponse(data) {
+      return hasOnlyAllowedFields(['name', 'email', 'subject', 'message', 'timestamp']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.email is string && isValidEmail(data.email) && data.email.size() < 150 &&
+             data.subject is string && data.subject.size() > 0 && data.subject.size() < 200 &&
+             data.message is string && data.message.size() > 0 && data.message.size() < 5000 &&
+             data.timestamp is string && data.timestamp.size() < 50;
+    }
+
+    function isValidAppState(data) {
+      return hasOnlyAllowedFields(['content', 'images', 'theme']) &&
+             data.content is map &&
+             data.images is map &&
+             data.theme is map;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /admins/{userId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin() && isValidAdmin(request.resource.data) && request.auth.uid == userId;
+      allow update: if isAdmin() && isValidAdmin(request.resource.data) && request.auth.uid == userId;
+      allow delete: if isAdmin();
+    }
+
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create: if isAdmin() && isValidService(request.resource.data);
+      allow update: if isAdmin() && isValidService(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /contactResponses/{responseId} {
+      allow read: if isAdmin();
+      allow create: if isValidContactResponse(request.resource.data);
+      allow update: if isAdmin() && isValidContactResponse(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /appState/global {
+      allow read: if true;
+      allow create: if isAdmin() && isValidAppState(request.resource.data);
+      allow update: if isAdmin() && isValidAppState(request.resource.data);
+      allow delete: if false;
+    }
+  }
+}
