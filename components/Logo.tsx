@@ -12,15 +12,24 @@ const Logo: React.FC<LogoProps> = ({ className = "h-12", variant = 'dark', logoU
   const blueColor = '#2980B9';   // Blue from the logo
   const textColor = variant === 'dark' ? '#2C3E50' : '#FFFFFF';
 
+  const saffronColor = '#FF9933';
+  const skyBlueColor = '#0EA5E9';
+
   if (logoUrl) {
     return (
-      <img src={logoUrl} alt="STATVION Logo" className={`object-contain ${className}`} referrerPolicy="no-referrer" />
+      <div className={`flex flex-col items-center justify-center ${className}`}>
+        <img src={logoUrl} alt="STATVION Logo" className={`object-contain ${className}`} referrerPolicy="no-referrer" />
+        <div className="flex items-center justify-between w-full mt-1 px-1">
+          <span className="text-[10.5px] font-bold tracking-[0.1em]" style={{ color: saffronColor }}>PRIVATE</span>
+          <span className="text-[10.5px] font-bold tracking-[0.1em]" style={{ color: skyBlueColor }}>LIMITED</span>
+        </div>
+      </div>
     );
   }
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      <svg width="60" height="60" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+      <svg width="63" height="63" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
         {/* Circuit Nodes and Lines - Left Side */}
         <circle cx="25" cy="55" r="5" fill={orangeColor} />
         <circle cx="25" cy="85" r="5" fill={orangeColor} />
@@ -40,17 +49,17 @@ const Logo: React.FC<LogoProps> = ({ className = "h-12", variant = 'dark', logoU
       
       <div className="flex flex-col leading-none">
         <div className="flex items-baseline">
-          <span className="text-3xl font-extrabold tracking-tight" style={{ color: variant === 'dark' ? orangeColor : '#FFFFFF' }}>Stat</span>
-          <span className="text-3xl font-extrabold tracking-tight" style={{ color: variant === 'dark' ? blueColor : '#FFFFFF' }}>vion</span>
+          <span className="text-[31.5px] font-extrabold tracking-tight" style={{ color: variant === 'dark' ? orangeColor : '#FFFFFF' }}>Stat</span>
+          <span className="text-[31.5px] font-extrabold tracking-tight" style={{ color: variant === 'dark' ? blueColor : '#FFFFFF' }}>vion</span>
         </div>
         <div className="flex items-center justify-center gap-1 mt-1">
           <div className="h-px bg-blue-400 flex-grow"></div>
-          <span className="text-sm font-bold tracking-[0.3em]" style={{ color: blueColor }}>INFOTECH</span>
+          <span className="text-[14.7px] font-bold tracking-[0.3em]" style={{ color: blueColor }}>INFOTECH</span>
           <div className="h-px bg-blue-400 flex-grow"></div>
         </div>
         <div className="flex items-center justify-between mt-1">
-          <span className="text-[10px] font-bold tracking-[0.1em]" style={{ color: orangeColor }}>PRIVATE</span>
-          <span className="text-[10px] font-bold tracking-[0.1em]" style={{ color: blueColor }}>LIMITED</span>
+          <span className="text-[10.5px] font-bold tracking-[0.1em]" style={{ color: saffronColor }}>PRIVATE</span>
+          <span className="text-[10.5px] font-bold tracking-[0.1em]" style={{ color: skyBlueColor }}>LIMITED</span>
         </div>
       </div>
     </div>

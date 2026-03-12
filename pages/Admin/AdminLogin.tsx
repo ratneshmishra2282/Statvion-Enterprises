@@ -36,7 +36,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
       <motion.div 
         animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -54,7 +54,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
         transition={{ duration: 0.5 }}
         className="absolute top-8 left-8 z-10"
       >
-        <a href={`#${RoutePath.HOME}`} className="text-white flex items-center gap-2 opacity-70 hover:opacity-100 transition-all">
+        <a href={`#${RoutePath.HOME}`} className="text-slate-900 flex items-center gap-2 opacity-70 hover:opacity-100 transition-all">
           <ArrowLeft size={20} /> Back to Website
         </a>
       </motion.div>
@@ -70,7 +70,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-3xl font-bold text-white mb-2"
+            className="text-3xl font-bold text-slate-900 mb-2"
           >
             CMS Portal
           </motion.h1>
@@ -78,7 +78,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-slate-400"
+            className="text-slate-600"
           >
             Sign in to manage your content
           </motion.p>
@@ -88,14 +88,14 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-slate-950 border border-slate-800 p-10 rounded-[2rem] shadow-2xl relative overflow-hidden text-center"
+          className="bg-slate-50 border border-slate-200 p-10 rounded-[2rem] shadow-xl relative overflow-hidden text-center"
         >
-          <div className="w-20 h-20 bg-blue-600/10 border border-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-blue-500">
+          <div className="w-20 h-20 bg-blue-600/10 border border-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-blue-600">
             <ShieldCheck size={40} />
           </div>
           
-          <h2 className="text-2xl font-bold text-white mb-4">Enterprise Access</h2>
-          <p className="text-slate-400 mb-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Enterprise Access</h2>
+          <p className="text-slate-600 mb-8">
             Authenticate using your corporate Google account to access the CMS dashboard.
           </p>
 
@@ -114,7 +114,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
             whileTap={{ scale: 0.98 }}
             onClick={handleGoogleLogin}
             disabled={isLoading}
-            className="w-full bg-white text-slate-900 font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 disabled:opacity-70"
+            className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-3 disabled:opacity-70"
           >
             <svg className="w-6 h-6" viewBox="0 0 24 24">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

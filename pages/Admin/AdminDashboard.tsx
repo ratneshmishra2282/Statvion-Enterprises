@@ -281,10 +281,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] flex">
+    <div className="min-h-screen bg-slate-50 flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-slate-950 text-white flex flex-col shrink-0 fixed h-full z-20 border-r border-slate-800">
-        <div className="p-8 border-b border-slate-800">
+      <aside className="w-64 bg-white text-slate-900 flex flex-col shrink-0 fixed h-full z-20 border-r border-slate-200">
+        <div className="p-8 border-b border-slate-200">
           <a href={`#${RoutePath.HOME}`} className="text-xl font-bold flex items-center gap-2 hover:opacity-80 transition-opacity">
             {tempImages.logoUrl ? (
               <img src={tempImages.logoUrl} alt="Logo" className="h-8 object-contain" referrerPolicy="no-referrer" />
@@ -295,19 +295,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
         </div>
         
         <nav className="flex-grow p-6 space-y-2">
-          <button onClick={() => setActiveTab('content')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'content' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('content')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'content' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <FileText size={20} /> Page Content
           </button>
-          <button onClick={() => setActiveTab('services')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'services' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('services')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'services' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <LayoutDashboard size={20} /> Services
           </button>
-          <button onClick={() => setActiveTab('cloud')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'cloud' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('cloud')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'cloud' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <CloudIcon size={20} /> Google Drive Sync
           </button>
-          <button onClick={() => setActiveTab('seo')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'seo' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('seo')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'seo' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <Search size={20} /> SEO & Marketing
           </button>
-          <button onClick={() => setActiveTab('responses')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'responses' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('responses')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'responses' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <Mail size={20} /> Contact Responses
             {state.responses.length > 0 && (
               <motion.span 
@@ -319,15 +319,15 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
               </motion.span>
             )}
           </button>
-          <button onClick={() => setActiveTab('media')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'media' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('media')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'media' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <ImageIcon size={20} /> Site Logo & Media
           </button>
-          <button onClick={() => setActiveTab('appearance')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'appearance' ? 'bg-blue-600' : 'hover:bg-slate-800'}`}>
+          <button onClick={() => setActiveTab('appearance')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'appearance' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
             <Palette size={20} /> Appearance
           </button>
         </nav>
 
-        <div className="p-6 border-t border-slate-800">
+        <div className="p-6 border-t border-slate-200">
           <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:text-red-300 transition-colors">
             <LogOut size={20} /> Sign Out
           </button>
@@ -338,11 +338,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
       <main className="ml-64 flex-grow p-10 relative">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between items-center mb-10">
-            <h1 className="text-3xl font-extrabold text-white capitalize tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 capitalize tracking-tight">
               {activeTab === 'cloud' ? 'Cloud Database' : activeTab}
             </h1>
             <div className="flex gap-4">
-              <a href={`#${RoutePath.HOME}`} target="_blank" className="flex items-center gap-2 px-6 py-2 bg-slate-800 text-white font-bold rounded-lg hover:bg-slate-700 transition-all">
+              <a href={`#${RoutePath.HOME}`} target="_blank" className="flex items-center gap-2 px-6 py-2 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-all">
                 <Monitor size={18} /> Visit Site
               </a>
               <AnimatePresence>
@@ -386,49 +386,49 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
               >
                 <div className="grid grid-cols-1 gap-8">
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-3">Hero Headline</label>
+                    <label className="block text-sm font-bold text-slate-400 mb-3">Hero Headline</label>
                     <textarea 
                       value={tempContent.heroTitle}
                       onChange={(e) => setTempContent({...tempContent, heroTitle: e.target.value})}
-                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-4 focus:ring-blue-900/30 transition-all text-xl font-semibold"
+                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-800 text-white outline-none focus:ring-4 focus:ring-blue-900/50 transition-all text-xl font-semibold"
                       rows={2}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-3">Hero Subtitle</label>
+                    <label className="block text-sm font-bold text-slate-400 mb-3">Hero Subtitle</label>
                     <textarea 
                       value={tempContent.heroSubtitle}
                       onChange={(e) => setTempContent({...tempContent, heroSubtitle: e.target.value})}
-                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-950 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/30 transition-all"
+                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-800 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/50 transition-all"
                       rows={3}
                     />
                   </div>
                   <div className="h-px bg-slate-800 my-4"></div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-3">About STATVION</label>
+                    <label className="block text-sm font-bold text-slate-400 mb-3">About STATVION</label>
                     <textarea 
                       value={tempContent.aboutText}
                       onChange={(e) => setTempContent({...tempContent, aboutText: e.target.value})}
-                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-950 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/30 transition-all"
+                      className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-800 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/50 transition-all"
                       rows={5}
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-sm font-bold text-slate-300 mb-3">Our Vision</label>
+                      <label className="block text-sm font-bold text-slate-400 mb-3">Our Vision</label>
                       <textarea 
                         value={tempContent.vision}
                         onChange={(e) => setTempContent({...tempContent, vision: e.target.value})}
-                        className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-950 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/30 transition-all"
+                        className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-800 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/50 transition-all"
                         rows={3}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-slate-300 mb-3">Our Mission</label>
+                      <label className="block text-sm font-bold text-slate-400 mb-3">Our Mission</label>
                       <textarea 
                         value={tempContent.mission}
                         onChange={(e) => setTempContent({...tempContent, mission: e.target.value})}
-                        className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-950 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/30 transition-all"
+                        className="w-full px-5 py-4 rounded-2xl border border-slate-700 bg-slate-800 text-slate-300 outline-none focus:ring-4 focus:ring-blue-900/50 transition-all"
                         rows={3}
                       />
                     </div>
@@ -452,7 +452,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={addService} 
-                    className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
+                    className="bg-slate-100 text-slate-900 px-8 py-4 rounded-2xl font-bold flex items-center gap-3 hover:bg-slate-200 transition-all shadow-xl shadow-slate-200"
                   >
                     <Plus size={20} /> Create Service
                   </motion.button>
@@ -474,13 +474,13 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                               type="text" 
                               value={service.title} 
                               onChange={(e) => updateService(service.id, { title: e.target.value })}
-                              className="flex-grow font-bold text-xl px-4 py-2 border border-slate-700 bg-slate-950 text-white rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                              className="flex-grow font-bold text-xl px-4 py-2 border border-slate-800 bg-slate-950 text-white rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
                               placeholder="Service Title"
                             />
                             <select 
                               value={service.category}
                               onChange={(e) => updateService(service.id, { category: e.target.value as any })}
-                              className="px-4 py-2 border border-slate-700 bg-slate-950 text-white rounded-xl font-semibold"
+                              className="px-4 py-2 border border-slate-800 bg-slate-950 text-white rounded-xl font-semibold"
                             >
                               <option value="it">IT Solutions</option>
                               <option value="consultancy">Consultancy</option>
@@ -490,7 +490,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                           <textarea 
                             value={service.description}
                             onChange={(e) => updateService(service.id, { description: e.target.value })}
-                            className="w-full px-4 py-3 border border-slate-700 bg-slate-950 text-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                            className="w-full px-4 py-3 border border-slate-800 bg-slate-950 text-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
                             rows={2}
                             placeholder="Service description..."
                           />
@@ -537,8 +537,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                   </div>
 
                   {!accessToken ? (
-                    <div className="bg-slate-950 border-2 border-dashed border-slate-800 p-16 rounded-[2.5rem] text-center">
-                      <div className="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-slate-800">
+                    <div className="bg-slate-800 border-2 border-dashed border-slate-700 p-16 rounded-[2.5rem] text-center">
+                      <div className="w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-slate-700">
                         <Database className="text-blue-500" />
                       </div>
                       <h3 className="text-2xl font-bold text-white mb-4">Connect Google Account</h3>
@@ -547,7 +547,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                       </p>
                       <button 
                         onClick={authenticate}
-                        className="bg-slate-800 text-white border border-slate-700 px-12 py-5 rounded-2xl font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-4 mx-auto text-lg"
+                        className="bg-slate-900 text-white border border-slate-700 px-12 py-5 rounded-2xl font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-4 mx-auto text-lg"
                       >
                         <img src="https://www.google.com/favicon.ico" className="w-6 h-6" alt="Google" />
                         Sign in with Google
@@ -555,7 +555,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                      <div className="p-10 bg-slate-950 rounded-[2.5rem] hover:bg-slate-800 border-2 border-transparent hover:border-blue-500 hover:shadow-2xl transition-all cursor-pointer group" onClick={syncToCloud}>
+                      <div className="p-10 bg-slate-800 rounded-[2.5rem] hover:bg-slate-700 border-2 border-transparent hover:border-blue-500 hover:shadow-2xl transition-all cursor-pointer group" onClick={syncToCloud}>
                         <div className="flex items-center gap-6 mb-8">
                           <div className="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                             <ArrowUpCircle size={32} />
@@ -571,7 +571,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         </button>
                       </div>
 
-                      <div className="p-10 bg-slate-950 rounded-[2.5rem] hover:bg-slate-800 border-2 border-transparent hover:border-orange-500 hover:shadow-2xl transition-all cursor-pointer group" onClick={pullFromCloud}>
+                      <div className="p-10 bg-slate-800 rounded-[2.5rem] hover:bg-slate-700 border-2 border-transparent hover:border-orange-500 hover:shadow-2xl transition-all cursor-pointer group" onClick={pullFromCloud}>
                         <div className="flex items-center gap-6 mb-8">
                           <div className="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                             <ArrowDownCircle size={32} />
@@ -581,7 +581,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         <p className="text-slate-400 mb-8 leading-relaxed">
                           Download the latest data from your Drive. This is useful if you edit from multiple computers.
                         </p>
-                        <button disabled={syncing} className="w-full bg-slate-800 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-slate-900/50 disabled:opacity-50 border border-slate-700">
+                        <button disabled={syncing} className="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-slate-900/20 disabled:opacity-50 border border-slate-700">
                           {syncing ? <RefreshCw className="animate-spin" /> : <RefreshCw size={20} />}
                           {syncing ? 'Downloading...' : 'Import Backup'}
                         </button>
@@ -590,12 +590,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                   )}
 
                   {state.cloudConfig.lastSync && (
-                    <div className="mt-12 pt-8 border-t border-slate-100 flex items-center justify-between">
+                    <div className="mt-12 pt-8 border-t border-slate-800 flex items-center justify-between">
                       <div className="flex items-center gap-3 text-slate-400 font-medium">
                         <Check size={20} className="text-green-500" />
                         Sync Status: All changes backed up
                       </div>
-                      <div className="text-slate-400 text-sm">
+                      <div className="text-slate-500 text-sm">
                         Last update: {new Date(state.cloudConfig.lastSync).toLocaleString()}
                       </div>
                     </div>
@@ -633,21 +633,21 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 <h3 className="text-2xl font-bold mb-8 text-white">Search Engine Optimization</h3>
                 <div className="space-y-6 max-w-2xl">
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-2">Meta Title</label>
+                    <label className="block text-sm font-bold text-slate-400 mb-2">Meta Title</label>
                     <input 
                       type="text" 
                       value={tempSeo.metaTitle}
                       onChange={(e) => setTempSeo({ ...tempSeo, metaTitle: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
                       placeholder="STATVION | End-to-End IT Services" 
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-300 mb-2">Meta Description</label>
+                    <label className="block text-sm font-bold text-slate-400 mb-2">Meta Description</label>
                     <textarea 
                       value={tempSeo.metaDescription}
                       onChange={(e) => setTempSeo({ ...tempSeo, metaDescription: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
                       rows={4} 
                       placeholder="Expert IT consultancy and software development..." 
                     />
@@ -667,13 +667,13 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 className="space-y-6"
               >
                 <div className="flex justify-between items-center">
-                  <h3 className="text-2xl font-bold text-white">Inbound Inquiries</h3>
+                  <h3 className="text-2xl font-bold text-slate-900">Inbound Inquiries</h3>
                   {state.responses.length > 0 && (
                     <button 
                       onClick={() => {
                         if(confirm('Clear all responses?')) onUpdate({ responses: [] });
                       }}
-                      className="text-red-500 font-bold flex items-center gap-2 hover:bg-red-900/30 px-4 py-2 rounded-xl transition-all"
+                      className="text-red-500 font-bold flex items-center gap-2 hover:bg-red-100 px-4 py-2 rounded-xl transition-all"
                     >
                       <Trash2 size={18} /> Clear All
                     </button>
@@ -682,7 +682,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 
                 {state.responses.length === 0 ? (
                   <div className="bg-slate-900 p-20 rounded-[3rem] text-center border border-slate-800">
-                    <div className="w-20 h-20 bg-slate-950 rounded-full flex items-center justify-center mx-auto mb-6 border border-slate-800">
+                    <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-slate-700">
                       <Mail size={40} className="text-slate-500" />
                     </div>
                     <h4 className="text-xl font-bold text-white mb-2">No responses yet</h4>
@@ -718,15 +718,15 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                               </p>
                               <button 
                                 onClick={() => onUpdate({ responses: state.responses.filter(r => r.id !== res.id) })}
-                                className="p-2 text-slate-500 hover:text-red-500 transition-colors"
+                                className="p-2 text-slate-500 hover:text-red-400 transition-colors"
                               >
                                 <Trash2 size={18} />
                               </button>
                             </div>
                           </div>
-                          <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                          <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700">
                             <p className="font-bold text-white mb-2">{res.subject}</p>
-                            <p className="text-slate-400 leading-relaxed italic">"{res.message}"</p>
+                            <p className="text-slate-300 leading-relaxed italic">"{res.message}"</p>
                           </div>
                         </motion.div>
                       ))}
@@ -747,20 +747,20 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 className="space-y-6"
               >
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-2xl font-bold text-white">Media & Images</h3>
-                  <p className="text-slate-400">Manage site logo and generate high-quality images using Gemini 3.1 Pro</p>
+                  <h3 className="text-2xl font-bold text-slate-900">Media & Images</h3>
+                  <p className="text-slate-600">Manage site logo and generate high-quality images using Gemini 3.1 Pro</p>
                 </div>
 
-                <div className="bg-slate-900 p-8 rounded-[2.5rem] shadow-sm border border-slate-800 mb-8">
-                  <h4 className="text-xl font-bold text-white mb-4">Site Logo</h4>
-                  <p className="text-slate-400 mb-6">Provide a URL to an image to replace the default STATVION logo. Leave empty to use the default logo.</p>
+                <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200 mb-8">
+                  <h4 className="text-xl font-bold text-slate-900 mb-4">Site Logo</h4>
+                  <p className="text-slate-600 mb-6">Provide a URL to an image to replace the default STATVION logo. Leave empty to use the default logo.</p>
                   <div className="flex flex-col lg:flex-row gap-8 items-start">
                     <div className="w-full lg:w-1/3 shrink-0">
-                      <div className="h-32 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 relative flex items-center justify-center p-4">
+                      <div className="h-32 rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 relative flex items-center justify-center p-4">
                         {tempImages.logoUrl ? (
                           <img src={tempImages.logoUrl} alt="Site Logo" className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
                         ) : (
-                          <div className="text-slate-500 font-bold flex items-center gap-2">
+                          <div className="text-slate-400 font-bold flex items-center gap-2">
                             <ImageIcon size={24} /> Default Logo
                           </div>
                         )}
@@ -768,7 +768,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     </div>
                     <div className="flex-grow w-full space-y-4">
                       <div>
-                        <label className="block text-sm font-bold text-slate-400 mb-2">Upload Logo Image</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Upload Logo Image</label>
                         <input 
                           type="file" 
                           accept="image/*"
@@ -785,16 +785,16 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                               reader.readAsDataURL(file);
                             }
                           }}
-                          className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
                         />
                       </div>
                       <div className="flex items-center gap-4">
-                        <div className="h-px bg-slate-800 flex-grow"></div>
-                        <span className="text-slate-500 text-sm font-bold">OR</span>
-                        <div className="h-px bg-slate-800 flex-grow"></div>
+                        <div className="h-px bg-slate-200 flex-grow"></div>
+                        <span className="text-slate-400 text-sm font-bold">OR</span>
+                        <div className="h-px bg-slate-200 flex-grow"></div>
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-slate-400 mb-2">Logo Image URL</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Logo Image URL</label>
                         <input 
                           type="text" 
                           value={tempImages.logoUrl || ''}
@@ -817,12 +817,12 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     { key: 'aboutHero', label: 'About Page Hero Image', defaultPrompt: 'A modern, sleek office environment with diverse professionals collaborating, high-end photography' },
                     { key: 'contactMap', label: 'Contact Page Map Image', defaultPrompt: 'An abstract, artistic digital map with glowing nodes representing global connectivity, dark theme' }
                   ].map((img) => (
-                    <div key={img.key} className="bg-slate-900 p-8 rounded-[2.5rem] shadow-sm border border-slate-800 flex flex-col lg:flex-row gap-8">
+                    <div key={img.key} className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-8">
                       <div className="w-full lg:w-1/3 shrink-0">
-                        <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 relative group">
+                        <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 relative group">
                           <img src={tempImages[img.key as keyof typeof tempImages]} alt={img.label} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                           {generatingImage === img.key && (
-                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center text-white">
+                            <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex flex-col items-center justify-center text-slate-900">
                               <RefreshCw className="animate-spin mb-2" size={32} />
                               <span className="font-bold">Generating...</span>
                             </div>
@@ -830,22 +830,22 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         </div>
                       </div>
                       <div className="flex-grow space-y-4">
-                        <h4 className="text-xl font-bold text-white">{img.label}</h4>
+                        <h4 className="text-xl font-bold text-slate-900">{img.label}</h4>
                         <div>
-                          <label className="block text-sm font-bold text-slate-400 mb-2">Image Prompt</label>
+                          <label className="block text-sm font-bold text-slate-700 mb-2">Image Prompt</label>
                           <textarea 
                             id={`prompt-${img.key}`}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                             rows={3}
                             defaultValue={img.defaultPrompt}
                           />
                         </div>
                         <div className="flex flex-wrap gap-4 items-end">
                           <div>
-                            <label className="block text-sm font-bold text-slate-400 mb-2">Resolution</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-2">Resolution</label>
                             <select 
                               id={`size-${img.key}`}
-                              className="px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all font-semibold"
+                              className="px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all font-semibold"
                             >
                               <option value="1K">1K (Standard)</option>
                               <option value="2K">2K (High)</option>
@@ -881,18 +881,18 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 exit="exit"
                 className="space-y-8"
               >
-                <div className="bg-slate-900 p-10 rounded-[2.5rem] shadow-sm border border-slate-800">
-                  <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-200">
+                  <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                     <Palette className="text-blue-500" /> Typography Settings
                   </h3>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-sm font-bold text-slate-400 mb-2">Global Font Family</label>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Global Font Family</label>
                       <select 
                         value={tempTheme.fontFamily}
                         onChange={(e) => setTempTheme({ ...tempTheme, fontFamily: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       >
                         <option value="Inter, sans-serif">Inter (Default, Modern)</option>
                         <option value="'Space Grotesk', sans-serif">Space Grotesk (Tech, Geometric)</option>
@@ -904,11 +904,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     </div>
 
                     <div>
-                      <label className="block text-sm font-bold text-slate-400 mb-2">Base Font Size</label>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Base Font Size</label>
                       <select 
                         value={tempTheme.fontSize}
                         onChange={(e) => setTempTheme({ ...tempTheme, fontSize: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                       >
                         <option value="14px">Small (14px)</option>
                         <option value="16px">Medium / Default (16px)</option>
@@ -919,8 +919,8 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     </div>
                   </div>
 
-                  <div className="mt-8 p-6 bg-slate-950 rounded-2xl border border-slate-800">
-                    <h4 className="text-sm font-bold text-slate-400 mb-4 uppercase tracking-wider">Live Preview</h4>
+                  <div className="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <h4 className="text-sm font-bold text-slate-500 mb-4 uppercase tracking-wider">Live Preview</h4>
                     <div 
                       className="space-y-4" 
                       style={{ 
@@ -928,9 +928,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         fontSize: tempTheme.fontSize
                       }}
                     >
-                      <h1 className="text-4xl font-bold text-white">Heading 1 Example</h1>
-                      <h2 className="text-2xl font-semibold text-slate-200">Heading 2 Example</h2>
-                      <p className="text-slate-400 leading-relaxed">
+                      <h1 className="text-4xl font-bold text-slate-900">Heading 1 Example</h1>
+                      <h2 className="text-2xl font-semibold text-slate-800">Heading 2 Example</h2>
+                      <p className="text-slate-600 leading-relaxed">
                         This is a paragraph demonstrating the selected font family and base font size. 
                         The quick brown fox jumps over the lazy dog. 1234567890
                       </p>
@@ -952,9 +952,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
               initial={{ opacity: 0, y: 50, x: 50 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, y: 50, x: 50 }}
-              className="fixed bottom-12 right-12 bg-slate-900 text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4 z-50"
+              className="fixed bottom-12 right-12 bg-white text-slate-900 border border-slate-200 px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4 z-50"
             >
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">
                 <Check size={18} />
               </div>
               <span className="font-bold text-lg">Changes synchronized!</span>

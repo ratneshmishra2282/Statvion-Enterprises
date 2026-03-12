@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { RoutePath } from '../types';
-import { Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Linkedin, Instagram, Mail, Phone, MapPin, Twitter, Github } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -11,11 +11,11 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
   return (
-    <footer className="bg-black text-slate-300 pt-32 pb-16 border-t border-white/5 overflow-hidden relative">
+    <footer className="bg-slate-950 text-slate-400 pt-32 pb-16 border-t border-slate-800 overflow-hidden relative">
       <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.03, 0.05, 0.03] }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.1, 0.05] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 left-1/4 w-[800px] h-[800px] bg-[#0EA5E9] rounded-full mix-blend-multiply filter blur-[150px] translate-y-1/2"
+        className="absolute bottom-0 left-1/4 w-[800px] h-[800px] bg-[#0EA5E9] rounded-full filter blur-[150px] translate-y-1/2"
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
@@ -33,9 +33,10 @@ const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
               Empowering global enterprises through strategic technology leadership and engineering excellence.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Linkedin size={20} /></a>
-              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Twitter size={20} /></a>
-              <a href="#" className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Facebook size={20} /></a>
+              <a href="https://linkedin.com/company/statvioninfotech/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Linkedin size={20} /></a>
+              <a href="https://www.instagram.com/statvioninfotech/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Instagram size={20} /></a>
+              <a href={`#${RoutePath.HOME}`} className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Twitter size={20} /></a>
+              <a href={`#${RoutePath.HOME}`} className="text-slate-500 hover:text-[#0EA5E9] transition-all hover:-translate-y-1"><Github size={20} /></a>
             </div>
           </motion.div>
 
@@ -83,11 +84,15 @@ const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
             <ul className="space-y-6 text-sm font-medium">
               <li className="flex items-start gap-4 group cursor-pointer">
                 <MapPin className="text-[#FF9933] shrink-0 group-hover:scale-110 transition-transform" size={18} />
-                <span className="text-slate-400 group-hover:text-white transition-colors">123 Innovation Drive, Tech City, ST 54321</span>
+                <span className="text-slate-400 group-hover:text-white transition-colors">Lucknow Uttar Pradesh.</span>
+              </li>
+              <li className="flex items-center gap-4 group cursor-pointer">
+                <Phone className="text-[#FF9933] shrink-0 group-hover:scale-110 transition-transform" size={18} />
+                <span className="text-slate-400 group-hover:text-white transition-colors">+91 6388205751</span>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <Mail className="text-[#FF9933] shrink-0 group-hover:scale-110 transition-transform" size={18} />
-                <span className="text-slate-400 group-hover:text-white transition-colors">contact@statvion.com</span>
+                <span className="text-slate-400 group-hover:text-white transition-colors">contact@statvioninfotech.in</span>
               </li>
             </ul>
           </motion.div>
@@ -98,7 +103,7 @@ const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+          className="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-8"
         >
           <p className="text-xs text-slate-500 tracking-widest uppercase font-bold">
             &copy; {new Date().getFullYear()} STATVION INFOTECH.
