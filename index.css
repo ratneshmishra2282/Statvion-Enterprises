@@ -8,10 +8,10 @@
 }
 
 :root {
-  --saffron: #FF9933;
-  --saffron-dark: #E67E22;
+  --saffron: #C5A059;
+  --saffron-dark: #A68446;
   --saffron-light: #FFB366;
-  --sky-blue: #0EA5E9;
+  --sky-blue: #1E3A8A;
   --sky-blue-light: #7DD3FC;
   --ink: #0A0A0A;
   --paper: #F5F5F4;
@@ -38,11 +38,11 @@
 }
 
 .saffron-gradient {
-  background: linear-gradient(135deg, #FF9933 0%, #FF5E00 100%);
+  background: linear-gradient(135deg, #C5A059 0%, #FF5E00 100%);
 }
 
 .sky-gradient {
-  background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
 }
 
 .saffron-glow {

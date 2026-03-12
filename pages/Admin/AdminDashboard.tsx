@@ -85,7 +85,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
     try {
       await logOut();
       onLogout();
-      window.location.hash = RoutePath.HOME;
+      window.navigate(RoutePath.HOME);
     } catch (error) {
       console.error('Failed to log out', error);
     }
@@ -285,7 +285,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
       {/* Sidebar */}
       <aside className="w-64 bg-white text-slate-900 flex flex-col shrink-0 fixed h-full z-20 border-r border-slate-200">
         <div className="p-8 border-b border-slate-200">
-          <a href={`#${RoutePath.HOME}`} className="text-xl font-bold flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <a href={RoutePath.HOME} className="text-xl font-bold flex items-center gap-2 hover:opacity-80 transition-opacity">
             {tempImages.logoUrl ? (
               <img src={tempImages.logoUrl} alt="Logo" className="h-8 object-contain" referrerPolicy="no-referrer" />
             ) : (
@@ -295,19 +295,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
         </div>
         
         <nav className="flex-grow p-6 space-y-2">
-          <button onClick={() => setActiveTab('content')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'content' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('content')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'content' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <FileText size={20} /> Page Content
           </button>
-          <button onClick={() => setActiveTab('services')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'services' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('services')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'services' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <LayoutDashboard size={20} /> Services
           </button>
-          <button onClick={() => setActiveTab('cloud')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'cloud' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('cloud')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'cloud' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <CloudIcon size={20} /> Google Drive Sync
           </button>
-          <button onClick={() => setActiveTab('seo')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'seo' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('seo')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'seo' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <Search size={20} /> SEO & Marketing
           </button>
-          <button onClick={() => setActiveTab('responses')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'responses' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('responses')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'responses' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <Mail size={20} /> Contact Responses
             {state.responses.length > 0 && (
               <motion.span 
@@ -319,10 +319,10 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
               </motion.span>
             )}
           </button>
-          <button onClick={() => setActiveTab('media')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'media' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('media')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'media' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <ImageIcon size={20} /> Site Logo & Media
           </button>
-          <button onClick={() => setActiveTab('appearance')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'appearance' ? 'bg-blue-600 text-white' : 'hover:bg-slate-100'}`}>
+          <button onClick={() => setActiveTab('appearance')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'appearance' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <Palette size={20} /> Appearance
           </button>
         </nav>
@@ -338,11 +338,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
       <main className="ml-64 flex-grow p-10 relative">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between items-center mb-10">
-            <h1 className="text-3xl font-extrabold text-slate-900 capitalize tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 capitalize tracking-tighter">
               {activeTab === 'cloud' ? 'Cloud Database' : activeTab}
             </h1>
             <div className="flex gap-4">
-              <a href={`#${RoutePath.HOME}`} target="_blank" className="flex items-center gap-2 px-6 py-2 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-all">
+              <a href={RoutePath.HOME} target="_blank" className="flex items-center gap-2 px-6 py-2 bg-slate-100 text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-all">
                 <Monitor size={18} /> Visit Site
               </a>
               <AnimatePresence>
@@ -364,7 +364,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         setTimeout(() => setShowToast(false), 3000);
                       }
                     }} 
-                    className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-200"
+                    className="flex items-center gap-2 px-6 py-2 bg-slate-800 text-white font-bold rounded-lg hover:bg-blue-700 shadow-lg shadow-blue-200"
                   >
                     <Save size={18} /> Save Changes
                   </motion.button>
@@ -520,7 +520,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 <div className="bg-slate-900 p-12 rounded-[3rem] shadow-sm border border-slate-800">
                   <div className="flex items-start justify-between mb-12">
                     <div className="flex gap-8">
-                      <div className="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-white shadow-2xl shadow-blue-900/20">
+                      <div className="w-24 h-24 bg-slate-800 rounded-3xl flex items-center justify-center text-white shadow-2xl shadow-blue-900/20">
                         <CloudIcon size={48} />
                       </div>
                       <div>
@@ -557,7 +557,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                       <div className="p-10 bg-slate-800 rounded-[2.5rem] hover:bg-slate-700 border-2 border-transparent hover:border-blue-500 hover:shadow-2xl transition-all cursor-pointer group" onClick={syncToCloud}>
                         <div className="flex items-center gap-6 mb-8">
-                          <div className="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <div className="w-16 h-16 bg-slate-800 text-white rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                             <ArrowUpCircle size={32} />
                           </div>
                           <h4 className="text-2xl font-bold text-white">Push to Cloud</h4>
@@ -565,7 +565,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         <p className="text-slate-400 mb-8 leading-relaxed">
                           Upload your local changes to Google Drive. This updates the live version of your site database.
                         </p>
-                        <button disabled={syncing} className="w-full bg-blue-600 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 disabled:opacity-50">
+                        <button disabled={syncing} className="w-full bg-slate-800 text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 shadow-lg shadow-blue-900/20 disabled:opacity-50">
                           {syncing ? <RefreshCw className="animate-spin" /> : <Save size={20} />}
                           {syncing ? 'Uploading...' : 'Save to Drive'}
                         </button>
@@ -603,7 +603,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 </div>
 
                 {state.cloudConfig.isEnabled && (
-                  <div className="bg-blue-600 p-10 rounded-[2.5rem] text-white flex items-start gap-8 relative overflow-hidden shadow-2xl shadow-blue-200">
+                  <div className="bg-slate-800 p-10 rounded-[2.5rem] text-white flex items-start gap-8 relative overflow-hidden shadow-2xl shadow-blue-200">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
                     <AlertCircle size={40} className="shrink-0 text-blue-100" />
                     <div className="relative z-10">
@@ -611,7 +611,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                       <p className="text-blue-100 text-lg leading-relaxed mb-6">
                         To make your changes visible to everyone automatically, find the <code className="bg-blue-500 px-2 rounded font-bold">statvion_db.json</code> file in your Google Drive, right-click it, and set Share to <strong>"Anyone with the link can view"</strong>.
                       </p>
-                      <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center gap-2">
+                      <button className="bg-white text-slate-800 px-8 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center gap-2">
                         Learn how to share <Monitor size={18} />
                       </button>
                     </div>
@@ -859,7 +859,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                               generateImage(img.key, prompt, size);
                             }}
                             disabled={generatingImage !== null}
-                            className="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all flex items-center gap-2 disabled:opacity-50"
+                            className="bg-slate-800 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all flex items-center gap-2 disabled:opacity-50"
                           >
                             <Wand2 size={18} /> Generate New Image
                           </button>
@@ -934,7 +934,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                         This is a paragraph demonstrating the selected font family and base font size. 
                         The quick brown fox jumps over the lazy dog. 1234567890
                       </p>
-                      <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium">
+                      <button className="bg-slate-800 text-white px-6 py-2 rounded-lg font-medium">
                         Button Text
                       </button>
                     </div>

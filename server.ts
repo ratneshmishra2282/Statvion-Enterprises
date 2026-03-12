@@ -19,14 +19,33 @@ async function startServer() {
   // Robustly parse the private key
   let PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
   if (PRIVATE_KEY) {
-    // Remove surrounding quotes if the user accidentally included them
-    if (PRIVATE_KEY.startsWith('"') && PRIVATE_KEY.endsWith('"')) {
-      PRIVATE_KEY = PRIVATE_KEY.slice(1, -1);
-    } else if (PRIVATE_KEY.startsWith("'") && PRIVATE_KEY.endsWith("'")) {
-      PRIVATE_KEY = PRIVATE_KEY.slice(1, -1);
+    try {
+      // Check if the user pasted the entire JSON file content
+      const parsed = JSON.parse(PRIVATE_KEY);
+      if (parsed.private_key) {
+        PRIVATE_KEY = parsed.private_key;
+      }
+    } catch (e) {
+      // Not a JSON object, proceed
     }
+
+    // Remove surrounding quotes if the user accidentally included them
+    PRIVATE_KEY = PRIVATE_KEY.replace(/^["']|["']$/g, "");
+    
     // Convert literal \n strings into actual newline characters
     PRIVATE_KEY = PRIVATE_KEY.replace(/\\n/g, "\n");
+    
+    // Fix formatting if newlines are missing but spaces are present in the base64 payload
+    if (!PRIVATE_KEY.includes('\n')) {
+      PRIVATE_KEY = PRIVATE_KEY.replace(/(-----BEGIN PRIVATE KEY-----)(.+)(-----END PRIVATE KEY-----)/, '$1\n$2\n$3');
+      const parts = PRIVATE_KEY.split('\n');
+      if (parts.length === 3) {
+        // Add newlines every 64 characters for the base64 part
+        const base64 = parts[1].replace(/\s+/g, '');
+        const formattedBase64 = base64.match(/.{1,64}/g)?.join('\n') || base64;
+        PRIVATE_KEY = `${parts[0]}\n${formattedBase64}\n${parts[2]}`;
+      }
+    }
   }
 
   const auth = new JWT({

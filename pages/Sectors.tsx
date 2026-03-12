@@ -17,7 +17,7 @@ const sectors = [
   { name: 'Chemical', icon: <FlaskConical className="text-lime-600" /> },
   { name: 'Car Rental', icon: <Car className="text-red-500" /> },
   { name: 'High Tech and Electronics', icon: <Cpu className="text-purple-500" /> },
-  { name: 'Automotive', icon: <Car className="text-blue-600" /> },
+  { name: 'Automotive', icon: <Car className="text-slate-800" /> },
   { name: 'Packaging', icon: <Package className="text-brown-500" /> },
   { name: 'Warehouse', icon: <Warehouse className="text-gray-600" /> },
   { name: 'Trading and Distribution', icon: <BarChart3 className="text-green-600" /> },
@@ -36,13 +36,13 @@ const Sectors: React.FC = () => {
         <div className="absolute inset-0 opacity-20">
           <motion.div 
             animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#FF9933] rounded-full mix-blend-multiply filter blur-[120px]"
+            transition={{ duration: 8, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#C5A059] rounded-full mix-blend-multiply filter blur-[120px]"
           />
           <motion.div 
             animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#0EA5E9] rounded-full mix-blend-multiply filter blur-[120px]"
+            transition={{ duration: 10, repeat: Infinity, ease: [0.22, 1, 0.36, 1], delay: 2 }}
+            className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#1E3A8A] rounded-full mix-blend-multiply filter blur-[120px]"
           />
         </div>
         
@@ -52,7 +52,7 @@ const Sectors: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8"
+              className="text-[#C5A059] font-bold uppercase tracking-[0.4em] text-xs mb-8"
             >
               Industry Expertise
             </motion.h2>
@@ -60,7 +60,7 @@ const Sectors: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-serif font-light text-slate-900 mb-10 tracking-tight leading-[0.9]"
+              className="text-4xl md:text-6xl font-serif font-light text-slate-900 mb-10 tracking-tighter leading-[0.9]"
             >
               Sectors We <span className="italic">Empower</span>.
             </motion.h1>
@@ -88,12 +88,12 @@ const Sectors: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-                className="cxo-card p-10 rounded-3xl group hover:shadow-xl hover:shadow-blue-900/10 transition-all duration-500 border border-slate-800 bg-slate-900"
+                className="cxo-card p-10 rounded-3xl group hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 border border-slate-800 bg-slate-900"
               >
-                <div className="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#FF9933] group-hover:text-white transition-all duration-500 text-slate-400">
+                <div className="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-[#C5A059] group-hover:text-white transition-all duration-500 text-slate-400">
                   {React.cloneElement(sector.icon as React.ReactElement, { size: 32, strokeWidth: 1.5 })}
                 </div>
-                <h3 className="text-xl font-serif font-light text-white mb-6 tracking-tight group-hover:text-[#0EA5E9] transition-colors">
+                <h3 className="text-xl font-serif font-light text-white mb-6 tracking-tighter group-hover:text-[#1E3A8A] transition-colors">
                   {sector.name}
                 </h3>
                 <p className="text-slate-400 font-light leading-relaxed">
@@ -113,7 +113,7 @@ const Sectors: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-serif font-light text-slate-900 mb-12 tracking-tight"
+            className="text-3xl md:text-5xl font-serif font-light text-slate-900 mb-12 tracking-tighter"
           >
             Ready to transform your <span className="italic">industry</span> operations?
           </motion.h2>
@@ -124,7 +124,7 @@ const Sectors: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <a 
-              href="#/contact" 
+              href="/contact" 
               className="inline-flex items-center px-14 py-6 bg-slate-900 text-white font-bold rounded-full hover:bg-slate-800 transition-all shadow-xl shadow-black/5 hover:-translate-y-1"
             >
               Consult Our Experts

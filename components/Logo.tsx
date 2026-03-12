@@ -49,12 +49,12 @@ const Logo: React.FC<LogoProps> = ({ className = "h-12", variant = 'dark', logoU
       
       <div className="flex flex-col leading-none">
         <div className="flex items-baseline">
-          <span className="text-[31.5px] font-extrabold tracking-tight" style={{ color: variant === 'dark' ? orangeColor : '#FFFFFF' }}>Stat</span>
-          <span className="text-[31.5px] font-extrabold tracking-tight" style={{ color: variant === 'dark' ? blueColor : '#FFFFFF' }}>vion</span>
+          <span className="text-[31.5px] font-extrabold tracking-tighter" style={{ color: variant === 'dark' ? orangeColor : '#FFFFFF' }}>Stat</span>
+          <span className="text-[31.5px] font-extrabold tracking-tighter" style={{ color: variant === 'dark' ? blueColor : '#FFFFFF' }}>vion</span>
         </div>
         <div className="flex items-center justify-center gap-1 mt-1">
           <div className="h-px bg-blue-400 flex-grow"></div>
-          <span className="text-[14.7px] font-bold tracking-[0.3em]" style={{ color: blueColor }}>INFOTECH</span>
+          <span className="text-[14.7px] font-bold tracking-[0.4em]" style={{ color: blueColor }}>INFOTECH</span>
           <div className="h-px bg-blue-400 flex-grow"></div>
         </div>
         <div className="flex items-center justify-between mt-1">

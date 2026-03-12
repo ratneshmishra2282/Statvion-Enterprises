@@ -23,7 +23,7 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[#FF9933] font-bold uppercase tracking-[0.3em] text-xs mb-8"
+              className="text-[#C5A059] font-bold uppercase tracking-[0.4em] text-xs mb-8"
             >
               Service Portfolio
             </motion.h2>
@@ -31,7 +31,7 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-6xl font-serif font-light text-slate-900 mb-10 tracking-tight leading-[0.9]"
+              className="text-4xl md:text-6xl font-serif font-light text-slate-900 mb-10 tracking-tighter leading-[0.9]"
             >
               Strategic <span className="italic">Capabilities</span>.
             </motion.h1>
@@ -83,19 +83,19 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
-                        className="cxo-card p-10 rounded-3xl group hover:shadow-xl hover:shadow-blue-900/10 transition-all duration-500 border border-slate-800 bg-slate-900"
+                        className="cxo-card p-10 rounded-3xl group hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 border border-slate-800 bg-slate-900"
                       >
-                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-10 transition-all duration-500 bg-slate-800 text-slate-400 group-hover:bg-[#FF9933] group-hover:text-white">
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-10 transition-all duration-500 bg-slate-800 text-slate-400 group-hover:bg-[#C5A059] group-hover:text-white">
                           <IconComp size={28} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-xl font-serif font-light mb-6 tracking-tight transition-colors group-hover:text-[#0EA5E9] text-white">
+                        <h3 className="text-xl font-serif font-light mb-6 tracking-tighter transition-colors group-hover:text-[#1E3A8A] text-white">
                           {service.title}
                         </h3>
                         <p className="font-light leading-relaxed mb-10 text-slate-400">
                           {service.description}
                         </p>
-                        <button className="text-xs font-bold tracking-[0.2em] uppercase flex items-center gap-3 hover:gap-4 transition-all text-white">
-                          Inquire <ArrowRight size={14} className="text-[#FF9933]" />
+                        <button className="text-xs font-bold tracking-[0.3em] uppercase flex items-center gap-3 hover:gap-4 transition-all text-white">
+                          Inquire <ArrowRight size={14} className="text-[#C5A059]" />
                         </button>
                       </motion.div>
                     );

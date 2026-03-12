@@ -22,7 +22,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
       const user = await signInWithGoogle();
       if (user && user.email && ALLOWED_EMAILS.includes(user.email)) {
         onLogin();
-        window.location.hash = RoutePath.ADMIN_DASHBOARD;
+        window.navigate(RoutePath.ADMIN_DASHBOARD);
       } else {
         await logOut();
         setError('Unauthorized access. Only authorized administrators can sign in.');
@@ -39,13 +39,13 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
     <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
       <motion.div 
         animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.15, 0.1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 -left-4 w-[500px] h-[500px] bg-[#FF9933] rounded-full mix-blend-multiply filter blur-[120px]"
+        transition={{ duration: 8, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute top-0 -left-4 w-[500px] h-[500px] bg-[#C5A059] rounded-full mix-blend-multiply filter blur-[120px]"
       />
       <motion.div 
         animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-0 -right-4 w-[500px] h-[500px] bg-[#0EA5E9] rounded-full mix-blend-multiply filter blur-[120px]"
+        transition={{ duration: 10, repeat: Infinity, ease: [0.22, 1, 0.36, 1], delay: 2 }}
+        className="absolute bottom-0 -right-4 w-[500px] h-[500px] bg-[#1E3A8A] rounded-full mix-blend-multiply filter blur-[120px]"
       />
 
       <motion.div 
@@ -54,7 +54,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
         transition={{ duration: 0.5 }}
         className="absolute top-8 left-8 z-10"
       >
-        <a href={`#${RoutePath.HOME}`} className="text-slate-900 flex items-center gap-2 opacity-70 hover:opacity-100 transition-all">
+        <a href={RoutePath.HOME} className="text-slate-900 flex items-center gap-2 opacity-70 hover:opacity-100 transition-all">
           <ArrowLeft size={20} /> Back to Website
         </a>
       </motion.div>
@@ -90,7 +90,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="bg-slate-50 border border-slate-200 p-10 rounded-[2rem] shadow-xl relative overflow-hidden text-center"
         >
-          <div className="w-20 h-20 bg-blue-600/10 border border-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-blue-600">
+          <div className="w-20 h-20 bg-slate-800/10 border border-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-8 text-slate-800">
             <ShieldCheck size={40} />
           </div>
           

@@ -15,8 +15,19 @@ import Contact from './pages/Contact';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 
+declare global {
+  interface Window {
+    navigate: (path: string) => void;
+  }
+}
+
+window.navigate = (path: string) => {
+  window.history.pushState({}, '', path);
+  window.dispatchEvent(new PopStateEvent('popstate'));
+};
+
 const App: React.FC = () => {
-  const [currentPath, setCurrentPath] = useState<string>(window.location.hash.slice(1) || RoutePath.HOME);
+  const [currentPath, setCurrentPath] = useState<string>(window.location.pathname === '/' ? RoutePath.HOME : window.location.pathname);
   const [state, setState] = useState<AppState>(loadAppState());
   const [isAuthReady, setIsAuthReady] = useState(false);
 
@@ -38,12 +49,40 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentPath(window.location.hash.slice(1) || RoutePath.HOME);
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname === '/' ? RoutePath.HOME : window.location.pathname);
       window.scrollTo(0, 0);
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      
+      if (anchor && anchor.href) {
+        const url = new URL(anchor.href);
+        if (
+          url.origin === window.location.origin &&
+          anchor.target !== '_blank' &&
+          !anchor.hasAttribute('download') &&
+          !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey
+        ) {
+          const hrefAttr = anchor.getAttribute('href');
+          if (hrefAttr === '#') {
+            e.preventDefault();
+            return;
+          }
+          e.preventDefault();
+          window.navigate(url.pathname + url.search + url.hash);
+        }
+      }
+    };
+    document.addEventListener('click', handleGlobalClick);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      document.removeEventListener('click', handleGlobalClick);
+    };
   }, []);
 
   useEffect(() => {
