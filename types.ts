@@ -40,6 +40,7 @@ export interface AppImages {
   aboutHero: string;
   contactMap: string;
   logoUrl?: string;
+  faviconUrl?: string;
 }
 
 export interface AppTheme {

@@ -86,7 +86,8 @@ const DEFAULT_IMAGES = {
   homeStrategy: 'https://picsum.photos/seed/strategy/800/600',
   aboutHero: 'https://picsum.photos/seed/about/800/1000',
   contactMap: 'https://picsum.photos/seed/lucknow/800/600',
-  logoUrl: ''
+  logoUrl: '',
+  faviconUrl: ''
 };
 
 const DEFAULT_THEME = {

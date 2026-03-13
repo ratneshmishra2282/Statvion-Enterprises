@@ -64,7 +64,8 @@
             "homeStrategy": { "type": "string" },
             "aboutHero": { "type": "string" },
             "contactMap": { "type": "string" },
-            "logoUrl": { "type": "string" }
+            "logoUrl": { "type": "string" },
+            "faviconUrl": { "type": "string" }
           }
         },
         "theme": {

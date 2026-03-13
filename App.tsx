@@ -49,6 +49,18 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (state.images.faviconUrl) {
+      let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.href = state.images.faviconUrl;
+    }
+  }, [state.images.faviconUrl]);
+
+  useEffect(() => {
     const handlePopState = () => {
       setCurrentPath(window.location.pathname === '/' ? RoutePath.HOME : window.location.pathname);
       window.scrollTo(0, 0);

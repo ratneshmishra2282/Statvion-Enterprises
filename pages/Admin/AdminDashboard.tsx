@@ -811,6 +811,66 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                   </div>
                 </div>
 
+                <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-200 mb-8">
+                  <h4 className="text-xl font-bold text-slate-900 mb-4">Site Favicon</h4>
+                  <p className="text-slate-600 mb-6">Provide a URL to an image to replace the default favicon. Leave empty to use the default.</p>
+                  <div className="flex flex-col lg:flex-row gap-8 items-start">
+                    <div className="w-full lg:w-1/3 shrink-0">
+                      <div className="h-32 rounded-2xl overflow-hidden bg-slate-50 border border-slate-200 relative flex items-center justify-center p-4">
+                        {tempImages.faviconUrl ? (
+                          <img src={tempImages.faviconUrl} alt="Site Favicon" className="max-w-full max-h-full object-contain" referrerPolicy="no-referrer" />
+                        ) : (
+                          <div className="text-slate-400 font-bold flex items-center gap-2">
+                            <ImageIcon size={24} /> Default Favicon
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex-grow w-full space-y-4">
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Upload Favicon Image</label>
+                        <input 
+                          type="file" 
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                const base64String = reader.result as string;
+                                const newImages = { ...tempImages, faviconUrl: base64String };
+                                setTempImages(newImages);
+                                onUpdate({ images: newImages });
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 outline-none focus:ring-2 focus:ring-blue-500 transition-all file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
+                        />
+                      </div>
+                      <div className="flex items-center gap-4">
+                        <div className="h-px bg-slate-200 flex-grow"></div>
+                        <span className="text-slate-400 text-sm font-bold">OR</span>
+                        <div className="h-px bg-slate-200 flex-grow"></div>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-2">Favicon Image URL</label>
+                        <input 
+                          type="text" 
+                          value={tempImages.faviconUrl || ''}
+                          onChange={(e) => {
+                            const newImages = { ...tempImages, faviconUrl: e.target.value };
+                            setTempImages(newImages);
+                            onUpdate({ images: newImages });
+                          }}
+                          className="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-950 text-white outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                          placeholder="https://example.com/my-favicon.ico"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 gap-8">
                   {[
                     { key: 'homeStrategy', label: 'Home Page Strategy Image', defaultPrompt: 'A futuristic business strategy meeting with holographic data visualizations, cinematic lighting' },
