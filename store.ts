@@ -96,8 +96,8 @@ const DEFAULT_THEME = {
 };
 
 const DEFAULT_SEO = {
-  metaTitle: 'Statvion Infotech | End-to-End IT & Consultancy Services',
-  metaDescription: 'Leading IT consultancy providing end-to-end technology solutions, software development, and strategic IT consulting for businesses worldwide.'
+  metaTitle: 'Statvion Infotech Private Limited| Enterprise Technology Consulting',
+  metaDescription: 'Statvion Infotech provides enterprise technology consulting, ERP platforms, and scalable digital ecosystems for modern organizations.'
 };
 
 export const loadAppState = (): AppState => {
