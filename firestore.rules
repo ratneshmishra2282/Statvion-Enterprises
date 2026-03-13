@@ -35,6 +35,8 @@ service cloud.firestore {
     //   - content: map
     //   - images: map
     //   - theme: map
+    //   - seo: map
+    //   - services: list
     //
     // ===============================================================
 
@@ -90,10 +92,12 @@ service cloud.firestore {
     }
 
     function isValidAppState(data) {
-      return hasOnlyAllowedFields(['content', 'images', 'theme']) &&
+      return hasOnlyAllowedFields(['content', 'images', 'theme', 'seo', 'services']) &&
              data.content is map &&
              data.images is map &&
-             data.theme is map;
+             data.theme is map &&
+             data.seo is map &&
+             data.services is list;
     }
 
     function isValidAnalytics(data) {
@@ -116,13 +120,6 @@ service cloud.firestore {
       allow read: if isAdmin();
       allow create: if isAdmin() && isValidAdmin(request.resource.data) && request.auth.uid == userId;
       allow update: if isAdmin() && isValidAdmin(request.resource.data) && request.auth.uid == userId;
-      allow delete: if isAdmin();
-    }
-
-    match /services/{serviceId} {
-      allow read: if true;
-      allow create: if isAdmin() && isValidService(request.resource.data);
-      allow update: if isAdmin() && isValidService(request.resource.data);
       allow delete: if isAdmin();
     }
 

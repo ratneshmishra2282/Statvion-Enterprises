@@ -3,8 +3,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RoutePath, AppState } from './types';
 import { loadAppState, saveAppState } from './store';
-import { auth, logOut } from './firebase';
+import { auth, logOut, db } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { doc, onSnapshot, setDoc, collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -33,6 +34,45 @@ const App: React.FC = () => {
   const [isAuthReady, setIsAuthReady] = useState(false);
 
   const ALLOWED_EMAILS = ['ratnesh2282@gmail.com'];
+
+  // Fetch global state from Firestore
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'appState', 'global'), (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setState(prev => ({
+          ...prev,
+          content: data.content || prev.content,
+          images: data.images || prev.images,
+          theme: data.theme || prev.theme,
+          seo: data.seo || prev.seo,
+          services: data.services || prev.services
+        }));
+      } else {
+        // Initialize if it doesn't exist
+        setDoc(doc(db, 'appState', 'global'), {
+          content: state.content,
+          images: state.images,
+          theme: state.theme,
+          seo: state.seo,
+          services: state.services
+        });
+      }
+    });
+    return () => unsub();
+  }, []);
+
+  // Fetch contact responses if admin
+  useEffect(() => {
+    if (state.isLoggedIn) {
+      const q = query(collection(db, 'contactResponses'), orderBy('timestamp', 'desc'));
+      const unsub = onSnapshot(q, (snapshot) => {
+        const responses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
+        setState(prev => ({ ...prev, responses }));
+      });
+      return () => unsub();
+    }
+  }, [state.isLoggedIn]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -118,12 +158,29 @@ const App: React.FC = () => {
     }
   }, [state.seo]);
 
-  const updateState = useCallback((newState: Partial<AppState>) => {
+  const updateState = useCallback(async (newState: Partial<AppState>) => {
+    // Optimistic local update
     setState(prev => {
       const updated = { ...prev, ...newState };
       saveAppState(updated);
       return updated;
     });
+
+    // Sync to Firestore
+    try {
+      const globalUpdate: any = {};
+      if (newState.content) globalUpdate.content = newState.content;
+      if (newState.images) globalUpdate.images = newState.images;
+      if (newState.theme) globalUpdate.theme = newState.theme;
+      if (newState.seo) globalUpdate.seo = newState.seo;
+      if (newState.services) globalUpdate.services = newState.services;
+      
+      if (Object.keys(globalUpdate).length > 0) {
+        await setDoc(doc(db, 'appState', 'global'), globalUpdate, { merge: true });
+      }
+    } catch (error) {
+      console.error('Failed to sync state to Firestore:', error);
+    }
   }, []);
 
   const renderPage = () => {
@@ -140,13 +197,17 @@ const App: React.FC = () => {
         return (
           <Contact 
             images={state.images}
-            onSendMessage={(data) => {
-              const newResponse = {
-                ...data,
-                id: Date.now().toString(),
-                timestamp: new Date().toISOString()
-              };
-              updateState({ responses: [newResponse, ...state.responses] });
+            onSendMessage={async (data) => {
+              try {
+                const newResponse = {
+                  ...data,
+                  timestamp: new Date().toISOString()
+                };
+                await addDoc(collection(db, 'contactResponses'), newResponse);
+                // We don't need to manually update state here because the onSnapshot listener will handle it if admin
+              } catch (error) {
+                console.error("Failed to send message", error);
+              }
             }} 
           />
         );

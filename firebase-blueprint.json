@@ -74,6 +74,17 @@
             "fontFamily": { "type": "string" },
             "fontSize": { "type": "string" }
           }
+        },
+        "seo": {
+          "type": "object",
+          "properties": {
+            "metaTitle": { "type": "string" },
+            "metaDescription": { "type": "string" }
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": { "$ref": "#/entities/Service" }
         }
       }
     },
@@ -98,10 +109,6 @@
     "/admins/{userId}": {
       "schema": { "$ref": "#/entities/AdminUser" },
       "description": "Stores admin users."
-    },
-    "/services/{serviceId}": {
-      "schema": { "$ref": "#/entities/Service" },
-      "description": "Stores services offered."
     },
     "/contactResponses/{responseId}": {
       "schema": { "$ref": "#/entities/ContactResponse" },
