@@ -32,6 +32,7 @@ const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname === '/' ? RoutePath.HOME : window.location.pathname);
   const [state, setState] = useState<AppState>(loadAppState());
   const [isAuthReady, setIsAuthReady] = useState(false);
+  const [isGlobalStateLoaded, setIsGlobalStateLoaded] = useState(false);
 
   const ALLOWED_EMAILS = ['ratnesh2282@gmail.com'];
 
@@ -58,6 +59,7 @@ const App: React.FC = () => {
           services: state.services
         });
       }
+      setIsGlobalStateLoaded(true);
     });
     return () => unsub();
   }, []);
@@ -230,6 +232,14 @@ const App: React.FC = () => {
   };
 
   const isCMSPage = currentPath.startsWith('/admin');
+
+  if (!isGlobalStateLoaded) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
