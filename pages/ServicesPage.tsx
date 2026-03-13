@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { Service } from '../types';
+import { Service, RoutePath } from '../types';
 import { Cpu, BarChart3, Code2, Smartphone, Database, Cloud, ArrowRight, Users, LayoutDashboard, Settings2, Activity } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
@@ -94,9 +94,9 @@ const ServicesPage: React.FC<{ services: Service[] }> = ({ services }) => {
                         <p className="font-light leading-relaxed mb-10 text-slate-400">
                           {service.description}
                         </p>
-                        <button className="text-xs font-bold tracking-[0.3em] uppercase flex items-center gap-3 hover:gap-4 transition-all text-white">
+                        <a href={RoutePath.CONTACT} className="text-xs font-bold tracking-[0.3em] uppercase flex items-center gap-3 hover:gap-4 transition-all text-white">
                           Inquire <ArrowRight size={14} className="text-[#C5A059]" />
-                        </button>
+                        </a>
                       </motion.div>
                     );
                   })}

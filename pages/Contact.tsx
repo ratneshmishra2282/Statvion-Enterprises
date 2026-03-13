@@ -108,7 +108,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Our Office</p>
-                    <p className="text-slate-300 font-light">Lucknow Uttar Pradesh.</p>
+                    <p className="text-slate-300 font-light">Lucknow, Uttar Pradesh.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -117,7 +117,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Call Us</p>
-                    <p className="text-slate-300 font-light">+91 6388205751</p>
+                    <p className="text-slate-300 font-light">+919453507033</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -135,7 +135,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">WhatsApp</p>
-                    <a href="https://wa.me/916388205751" target="_blank" rel="noopener noreferrer" className="text-slate-300 font-light hover:text-[#1E3A8A] transition-colors">
+                    <a href="https://api.whatsapp.com/send?phone=9453507033" target="_blank" rel="noopener noreferrer" className="text-slate-300 font-light hover:text-[#1E3A8A] transition-colors">
                       Chat with us
                     </a>
                   </div>
@@ -163,7 +163,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white/90 backdrop-blur-xl px-8 py-4 rounded-full shadow-xl border border-slate-200 group-hover:scale-105 transition-transform duration-300">
                   <span className="text-xs font-bold tracking-[0.3em] uppercase text-slate-900 flex items-center gap-3">
-                    <MapPin size={16} className="text-[#1E3A8A]" /> View Lucknow on Google Maps
+                    <MapPin size={16} className="text-[#1E3A8A]" /> Statvion Infotech
                   </span>
                 </div>
               </div>

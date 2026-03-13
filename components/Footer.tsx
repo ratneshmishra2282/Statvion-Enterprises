@@ -53,7 +53,6 @@ const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
               <li><a href={RoutePath.ABOUT} className="hover:text-white transition-colors flex items-center gap-2 group"><span className="w-0 h-px bg-[#1E3A8A] transition-all group-hover:w-4"></span>About</a></li>
               <li><a href={RoutePath.SERVICES} className="hover:text-white transition-colors flex items-center gap-2 group"><span className="w-0 h-px bg-[#1E3A8A] transition-all group-hover:w-4"></span>Services</a></li>
               <li><a href={RoutePath.CONTACT} className="hover:text-white transition-colors flex items-center gap-2 group"><span className="w-0 h-px bg-[#1E3A8A] transition-all group-hover:w-4"></span>Contact</a></li>
-              <li><a href={RoutePath.ADMIN_LOGIN} className="hover:text-[#1E3A8A] transition-colors flex items-center gap-2 group"><span className="w-0 h-px bg-[#C5A059] transition-all group-hover:w-4"></span>Admin Login</a></li>
             </ul>
           </motion.div>
 
@@ -88,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ logoUrl }) => {
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <Phone className="text-[#C5A059] shrink-0 group-hover:scale-110 transition-transform" size={18} />
-                <span className="text-slate-400 group-hover:text-white transition-colors">+91 6388205751</span>
+                <span className="text-slate-400 group-hover:text-white transition-colors">+919453507033</span>
               </li>
               <li className="flex items-center gap-4 group cursor-pointer">
                 <Mail className="text-[#C5A059] shrink-0 group-hover:scale-110 transition-transform" size={18} />
