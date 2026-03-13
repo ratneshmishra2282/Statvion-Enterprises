@@ -117,7 +117,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Call Us</p>
-                    <p className="text-slate-300 font-light">+919453507033</p>
+                    <p className="text-slate-300 font-light">+91 9453507033</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
@@ -126,7 +126,7 @@ const Contact: React.FC<ContactProps> = ({ onSendMessage, images }) => {
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">Email Us</p>
-                    <p className="text-slate-300 font-light">contact@statvioninfotech.in</p>
+                    <p className="text-slate-300 font-light">info@statvioninfotech.in</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-6">
