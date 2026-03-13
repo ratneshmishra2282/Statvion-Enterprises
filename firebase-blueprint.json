@@ -76,6 +76,22 @@
           }
         }
       }
+    },
+    "AnalyticsRecord": {
+      "title": "AnalyticsRecord",
+      "description": "A record of a user's visit to a page.",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "ip": { "type": "string" },
+        "os": { "type": "string" },
+        "browser": { "type": "string" },
+        "device": { "type": "string" },
+        "path": { "type": "string" },
+        "timeSpent": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["sessionId", "ip", "os", "browser", "device", "path", "timeSpent", "timestamp"]
     }
   },
   "firestore": {
@@ -94,6 +110,10 @@
     "/appState/global": {
       "schema": { "$ref": "#/entities/GlobalState" },
       "description": "Stores global CMS configuration."
+    },
+    "/analytics/{docId}": {
+      "schema": { "$ref": "#/entities/AnalyticsRecord" },
+      "description": "Stores visitor analytics data."
     }
   }
 }

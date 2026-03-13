@@ -96,6 +96,18 @@ service cloud.firestore {
              data.theme is map;
     }
 
+    function isValidAnalytics(data) {
+      return hasOnlyAllowedFields(['sessionId', 'ip', 'os', 'browser', 'device', 'path', 'timeSpent', 'timestamp']) &&
+             data.sessionId is string && data.sessionId.size() > 0 && data.sessionId.size() < 100 &&
+             data.ip is string && data.ip.size() > 0 && data.ip.size() < 50 &&
+             data.os is string && data.os.size() > 0 && data.os.size() < 50 &&
+             data.browser is string && data.browser.size() > 0 && data.browser.size() < 50 &&
+             data.device is string && data.device.size() > 0 && data.device.size() < 50 &&
+             data.path is string && data.path.size() > 0 && data.path.size() < 200 &&
+             data.timeSpent is number && data.timeSpent >= 0 &&
+             data.timestamp is string && data.timestamp.size() > 0 && data.timestamp.size() < 50;
+    }
+
     // ===============================================================
     // Rules
     // ===============================================================
@@ -126,6 +138,13 @@ service cloud.firestore {
       allow create: if isAdmin() && isValidAppState(request.resource.data);
       allow update: if isAdmin() && isValidAppState(request.resource.data);
       allow delete: if false;
+    }
+
+    match /analytics/{docId} {
+      allow read: if isAdmin();
+      allow create: if isValidAnalytics(request.resource.data);
+      allow update: if false;
+      allow delete: if isAdmin();
     }
   }
 }

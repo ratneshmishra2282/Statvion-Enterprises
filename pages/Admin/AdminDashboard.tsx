@@ -27,6 +27,7 @@ import {
 
 import { GoogleGenAI } from '@google/genai';
 import { logOut } from '../../firebase';
+import AnalyticsView from './AnalyticsView';
 
 interface AdminDashboardProps {
   state: AppState;
@@ -37,7 +38,7 @@ interface AdminDashboardProps {
 const DB_FILENAME = 'statvion_db.json';
 
 const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogout }) => {
-  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'cloud' | 'seo' | 'responses' | 'media' | 'appearance'>('cloud');
+  const [activeTab, setActiveTab] = useState<'content' | 'services' | 'cloud' | 'seo' | 'responses' | 'media' | 'appearance' | 'analytics'>('cloud');
   const [tempContent, setTempContent] = useState(state.content);
   const [tempImages, setTempImages] = useState(state.images);
   const [tempTheme, setTempTheme] = useState(state.theme || { fontFamily: 'Inter, sans-serif', fontSize: '16px' });
@@ -318,6 +319,9 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                 {state.responses.length}
               </motion.span>
             )}
+          </button>
+          <button onClick={() => setActiveTab('analytics')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'analytics' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
+            <Monitor size={20} /> Analytics
           </button>
           <button onClick={() => setActiveTab('media')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'media' ? 'bg-slate-800 text-white' : 'hover:bg-slate-100'}`}>
             <ImageIcon size={20} /> Site Logo & Media
@@ -733,6 +737,19 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ state, onUpdate, onLogo
                     </AnimatePresence>
                   </div>
                 )}
+              </motion.div>
+            )}
+
+            {/* TAB: Analytics */}
+            {activeTab === 'analytics' && (
+              <motion.div 
+                key="analytics"
+                variants={tabVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                <AnalyticsView />
               </motion.div>
             )}
 

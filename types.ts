@@ -35,6 +35,18 @@ export interface ContactResponse {
   timestamp: string;
 }
 
+export interface AnalyticsRecord {
+  id?: string;
+  sessionId: string;
+  ip: string;
+  os: string;
+  browser: string;
+  device: string;
+  path: string;
+  timeSpent: number;
+  timestamp: string;
+}
+
 export interface AppImages {
   homeStrategy: string;
   aboutHero: string;

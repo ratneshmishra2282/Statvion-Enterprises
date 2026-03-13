@@ -14,6 +14,7 @@ import Sectors from './pages/Sectors';
 import Contact from './pages/Contact';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 declare global {
   interface Window {
@@ -171,6 +172,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <AnalyticsTracker currentPath={currentPath} />
       {!isCMSPage && <Navbar logoUrl={state.images?.logoUrl} />}
       <main className={`flex-grow ${!isCMSPage ? 'pt-20' : ''}`}>
         <AnimatePresence mode="wait">
