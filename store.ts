@@ -96,8 +96,8 @@ const DEFAULT_THEME = {
 };
 
 const DEFAULT_SEO = {
-  metaTitle: 'Statvion Infotech Private Limited| Enterprise Technology Consulting',
-  metaDescription: 'Statvion Infotech provides enterprise technology consulting, ERP platforms, and scalable digital ecosystems for modern organizations.'
+  metaTitle: 'Statvion Infotech Private Limited | Enterprise Technology Consulting',
+  metaDescription: 'Statvion Infotech provides enterprise technology consulting, ERP platforms, cloud architecture, and scalable digital ecosystems.'
 };
 
 export const loadAppState = (): AppState => {
