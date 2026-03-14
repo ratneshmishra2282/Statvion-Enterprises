@@ -4,6 +4,10 @@ import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import dotenv from "dotenv";
 
+export const config = {
+  runtime: "edge"
+};
+
 dotenv.config();
 
 async function startServer() {
